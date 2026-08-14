@@ -6,23 +6,25 @@
 
 ---
 
-## 목표
 
----
-
-## 진행 방식
-
-
-
-## 규칙
-
-
----
 
 
 ### 이번주 문제 ⭐
 
+### 이번주 문제 ⭐
 
+**주제: DFS / BFS 기본기**
+
+| # | 문제 | 출처 | 난이도 | 유형 |
+|:-:|---|---|:-:|---|
+| 1 | [탈주범 검거](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpLIKAQ4DFAUq) | SWEA D4 | 중하 | BFS 최단거리 |
+| 2 | [요리사](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeUtVakTMDFAVH) | SWEA D4 | 중하 | DFS 부분집합 |
+| 3 | [타겟 넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165) | 프로그래머스 Lv.2 | 중하 | DFS 완전탐색 |
+| 4 | [게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844) | 프로그래머스 Lv.2 | 중하 | BFS 최단거리 |
+
+> 💬 **기본 문제는 선정 중.** 팀원분들 의견 주시면 반영할게요!
+
+> 추천 순서는 `타겟 넘버 → 게임 맵 최단거리 → 요리사 → 탈주범 검거` 입니다.
 
 ---
 

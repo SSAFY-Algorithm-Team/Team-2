@@ -20,8 +20,8 @@
 ## 최초 1회 설정
 
 ```bash
-git clone https://github.com/SSAFY-Algorithm-Team/Team-3.git
-cd Team-3
+git clone https://github.com/SSAFY-Algorithm-Team/Team-2.git
+cd Team-2
 ```
 
 `git --version` 을 실행해서 **2.23 이상**인지 확인하세요.

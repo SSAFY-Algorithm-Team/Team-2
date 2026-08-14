@@ -1,3 +1,6 @@
+#SWEA 4012. 요리사
+#소요시간: 40분 / 시도 1회
+
 def combination(lst,r):
 
 

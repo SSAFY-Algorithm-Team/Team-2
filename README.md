@@ -24,6 +24,13 @@
 
 > 💬 **기본 문제는 선정 중.** 팀원분들 의견 주시면 반영할게요!
 
+### 도전 문제 🔥
+
+| 문제 | 출처 | 난이도 | 유형 |
+|---|---|:-:|---|
+| [최적 경로](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD) | SWEA D5 | 중 | DFS 순열 + 가지치기 |
+
+
 > 추천 순서는 `타겟 넘버 → 게임 맵 최단거리 → 요리사 → 탈주범 검거` 입니다.
 
 ---

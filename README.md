@@ -6,23 +6,30 @@
 
 ---
 
+## 📌 이번주 문제 (Week 01)
 
+### 기본 문제
 
-
-### 이번주 문제 ⭐
-
-### 이번주 문제 ⭐
-
-**주제: DFS / BFS 기본기**
+**DP / 그리디**
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |:-:|---|---|:-:|---|
-| 1 | [탈주범 검거](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpLIKAQ4DFAUq) | SWEA D4 | 중하 | BFS 최단거리 |
-| 2 | [요리사](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeUtVakTMDFAVH) | SWEA D4 | 중하 | DFS 부분집합 |
-| 3 | [타겟 넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165) | 프로그래머스 Lv.2 | 중하 | DFS 완전탐색 |
-| 4 | [게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844) | 프로그래머스 Lv.2 | 중하 | BFS 최단거리 |
+| 1 | [체육복](https://school.programmers.co.kr/learn/courses/30/lessons/42862) | 프로그래머스 Lv.1 | 하 | 그리디 (선택 순서) |
+| 2 | [피보나치 수](https://school.programmers.co.kr/learn/courses/30/lessons/12945) | 프로그래머스 Lv.2 | 하 | DP 메모이제이션 |
+| 3 | [구명보트](https://school.programmers.co.kr/learn/courses/30/lessons/42885) | 프로그래머스 Lv.2 | 중 | 그리디 + 투 포인터 |
+| 4 | [정수 삼각형](https://school.programmers.co.kr/learn/courses/30/lessons/43105) | 프로그래머스 Lv.3 | 중 | 2차원 누적 DP |
 
-> 💬 **기본 문제는 선정 중.** 팀원분들 의견 주시면 반영할게요!
+**DFS / BFS**
+
+| # | 문제 | 출처 | 난이도 | 유형 |
+|:-:|---|---|:-:|---|
+| 5 | [타겟 넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165) | 프로그래머스 Lv.2 | 중하 | DFS 완전탐색 |
+| 6 | [게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844) | 프로그래머스 Lv.2 | 중하 | BFS 최단거리 |
+| 7 | [요리사](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeUtVakTMDFAVH) | SWEA D4 | 중하 | DFS 부분집합 |
+| 8 | [탈주범 검거](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpLIKAQ4DFAUq) | SWEA D4 | 중하 | BFS 최단거리 |
+
+> 💡 번호 순서대로 푸시면 난이도가 완만하게 올라갑니다.
+> 💬 **선정 중입니다.** 그리디는 SWEA 문제로 교체 검토 중이니 의견 주세요!
 
 ### 도전 문제 🔥
 
@@ -30,8 +37,6 @@
 |---|---|:-:|---|
 | [최적 경로](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD) | SWEA D5 | 중 | DFS 순열 + 가지치기 |
 
-
-> 추천 순서는 `타겟 넘버 → 게임 맵 최단거리 → 요리사 → 탈주범 검거` 입니다.
 
 ---
 

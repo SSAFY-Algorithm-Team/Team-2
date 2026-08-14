@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 이번주 문제 (Week 02)
+## 📌 이번주 문제 (Week 01)
 
 ### 기본 문제
 
@@ -14,21 +14,19 @@
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |:-:|---|---|:-:|---|
-| 1 | [체육복](https://school.programmers.co.kr/learn/courses/30/lessons/42862) | 프로그래머스 Lv.1 | 하 |  |
-| 2 | [피보나치 수](https://school.programmers.co.kr/learn/courses/30/lessons/12945) | 프로그래머스 Lv.2 | 하 |  |
-| 3 | [구명보트](https://school.programmers.co.kr/learn/courses/30/lessons/42885) | 프로그래머스 Lv.2 | 중하 |  |
-| 4 | [정수 삼각형](https://school.programmers.co.kr/learn/courses/30/lessons/43105) | 프로그래머스 Lv.3 | 중하 |  |
-
---- 그리디 DP는 일부러 문제유형은 안써두었어용
-
+| 1 | [체육복](https://school.programmers.co.kr/learn/courses/30/lessons/42862) | 프로그래머스 Lv.1 | 하 | 그리디 (선택 순서) |
+| 2 | [피보나치 수](https://school.programmers.co.kr/learn/courses/30/lessons/12945) | 프로그래머스 Lv.2 | 하 | DP 메모이제이션 |
+| 3 | [구명보트](https://school.programmers.co.kr/learn/courses/30/lessons/42885) | 프로그래머스 Lv.2 | 중하 | 그리디 + 투 포인터 |
+| 4 | [정수 삼각형](https://school.programmers.co.kr/learn/courses/30/lessons/43105) | 프로그래머스 Lv.3 | 중하 | 2차원 누적 DP |
+--- 레벨 3인데 크게 어렵지 않아요.
 **DFS / BFS**
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |:-:|---|---|:-:|---|
 | 5 | [타겟 넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165) | 프로그래머스 Lv.2 | 중하 | DFS 완전탐색 |
-| 6 | [게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844) | 프로그래머스 Lv.2 | 중 | BFS 최단거리 |
+| 6 | [게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844) | 프로그래머스 Lv.2 | 중하 | BFS 최단거리 |
 | 7 | [요리사](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeUtVakTMDFAVH) | SWEA D4 | 중하 | DFS 부분집합 |
-| 8 | [탈주범 검거](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpLIKAQ4DFAUq) | SWEA D4 | 중 | BFS 최단거리 |
+| 8 | [탈주범 검거](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpLIKAQ4DFAUq) | SWEA D4 | 중하 | BFS 최단거리 |
 
 
 ### 도전 문제 🔥
@@ -38,8 +36,8 @@
 | [최적 경로](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD) | SWEA D5 | 중상 | DFS 순열 + 가지치기 |
 
 
---- 도전문제는 모든 팀에서 공유하는 문제입니다.
-    다양한 풀이를 공유할 수 있도록 하겠습니다.
+--- 도전문제는 전 팀에서 공통으로 풀이하는 문제입니다. 다양한 풀이를
+    공유할 수 있으니, 많은 관심 부탁드려요
 
 ## 제출 방법 요약
 

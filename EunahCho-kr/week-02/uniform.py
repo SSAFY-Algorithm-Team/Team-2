@@ -1,4 +1,6 @@
-#sdfhakfjhad
+# programmers 체육복
+# https://school.programmers.co.kr/learn/courses/30/lessons/42862
+# 소요시간 : 25분 / 시도 : 2회
 
 def solution(n, lost, reserve):
     uniforms = [1] * (n + 2) # 앞 뒤 패딩값 -> 탐색시 인덱스 에러 방지

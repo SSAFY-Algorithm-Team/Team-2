@@ -1,3 +1,5 @@
+#sdfhakfjhad
+
 def solution(n, lost, reserve):
     uniforms = [1] * (n + 2) # 앞 뒤 패딩값 -> 탐색시 인덱스 에러 방지
     for r in reserve:

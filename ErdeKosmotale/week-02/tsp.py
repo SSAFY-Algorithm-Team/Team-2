@@ -1,3 +1,6 @@
+# 최적 경로 SWEA 최적 경로 (TSP 알고리즘)
+# 소요시간: 2시간 30분
+
 INF=float('inf')
 
 def cal_distance(graph,i,j):

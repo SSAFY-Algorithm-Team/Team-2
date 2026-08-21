@@ -6,40 +6,38 @@
 
 ---
 
-## 📌 이번주 문제 (Week 02)
+## 📌 이번주 문제 (Week 03)
 
 ### 기본 문제
 
-**DP / 그리디**
+**DP**
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |:-:|---|---|:-:|---|
-| 1 | [체육복](https://school.programmers.co.kr/learn/courses/30/lessons/42862) | 프로그래머스 Lv.1 | 하 |  |
-| 2 | [피보나치 수](https://school.programmers.co.kr/learn/courses/30/lessons/12945) | 프로그래머스 Lv.2 | 하 |  |
-| 3 | [구명보트](https://school.programmers.co.kr/learn/courses/30/lessons/42885) | 프로그래머스 Lv.2 | 중하 |  |
-| 4 | [정수 삼각형](https://school.programmers.co.kr/learn/courses/30/lessons/43105) | 프로그래머스 Lv.3 | 중하 |  |
-
---- 그리디 DP는 일부러 문제유형은 안써두었어용
+| 1 | [2 x n 타일링](https://school.programmers.co.kr/learn/courses/30/lessons/12900) | 프로그래머스 Lv.2 | 하 |  |
+| 2 | [땅따먹기](https://school.programmers.co.kr/learn/courses/30/lessons/12913) | 프로그래머스 Lv.2 | 중하 |  |
+| 3 | [등굣길](https://school.programmers.co.kr/learn/courses/30/lessons/42898) | 프로그래머스 Lv.3 | 중 |  |
+| 4 | [햄버거 다이어트 (5215)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWT-lPB6dHUDFAVT) | SWEA D3 | 중 |  |
 
 **DFS / BFS**
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |:-:|---|---|:-:|---|
-| 5 | [타겟 넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165) | 프로그래머스 Lv.2 | 중하 | DFS 완전탐색 |
-| 6 | [게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844) | 프로그래머스 Lv.2 | 중 | BFS 최단거리 |
-| 7 | [요리사](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeUtVakTMDFAVH) | SWEA D4 | 중하 | DFS 부분집합 |
-| 8 | [탈주범 검거](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpLIKAQ4DFAUq) | SWEA D4 | 중 | BFS 최단거리 |
+| 5 | [여행경로](https://school.programmers.co.kr/learn/courses/30/lessons/43164) | 프로그래머스 Lv.3 | 중 | DFS 백트래킹 + 사전순 |
+| 6 | [최장 경로 (2814)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7GOPPaAeMDFAXB) | SWEA D4 | 중 | DFS + 방문 복원 |
+| 7 | [단어 변환](https://school.programmers.co.kr/learn/courses/30/lessons/43163) | 프로그래머스 Lv.3 | 중 | BFS 최단 횟수 |
+| 8 | [홈 방범 서비스 (2117)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V61LqAf8DFAWu) | SWEA D4 | 중 | BFS + 완전탐색 |
 
 
 ### 도전 문제 🔥
 
 | 문제 | 출처 | 난이도 | 유형 |
 |---|---|:-:|---|
-| [최적 경로](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD) | SWEA D5 | 중상 | DFS 순열 + 가지치기 |
-
+| [보급로 (1249)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15QRX6APsCFAYD) | SWEA D4 | 중상 | 가중치 있는 최단경로 |
 
 --- 도전문제는 모든 팀에서 공유하는 문제입니다.
     다양한 풀이를 공유할 수 있도록 하겠습니다.
+
 
 ## 제출 방법 요약
 

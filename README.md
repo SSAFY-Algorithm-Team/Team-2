@@ -1,47 +1,43 @@
 # 알고리즘 스터디 (삼성 SW 역량테스트 A.B형 대비)
 
-> SSAFY 알고리즘 스터디 · 5인 · 날짜 유동
+SSAFY 알고리즘 스터디 · 5인 · 날짜 유동
 
-📖 **처음 오셨나요? → [깃허브 사용 가이드](GITHUB_GUIDE.md)**
+📖 처음 오셨나요? → 깃허브 사용 가이드
 
----
-
-## 📌 이번주 문제 (Week 03)
+## 📌 이번주 문제 (Week 04)
 
 ### 기본 문제
 
-**DP**
+**자료구조**
 
 | # | 문제 | 출처 | 난이도 | 유형 |
-|:-:|---|---|:-:|---|
-| 1 | [2 x n 타일링](https://school.programmers.co.kr/learn/courses/30/lessons/12900) | 프로그래머스 Lv.2 | 하 |  |
-| 2 | [땅따먹기](https://school.programmers.co.kr/learn/courses/30/lessons/12913) | 프로그래머스 Lv.2 | 중하 |  |
-| 3 | [등굣길](https://school.programmers.co.kr/learn/courses/30/lessons/42898) | 프로그래머스 Lv.3 | 중 |  |
-| 4 | [햄버거 다이어트 (5215)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWT-lPB6dHUDFAVT) | SWEA D3 | 중 |  |
+|---|---|---|---|---|
+| 1 | 서브트리 (5174) | SWEA D3 | 하 | 트리 순회 (DFS) |
+| 2 | 더 맵게 | 프로그래머스 Lv.2 | 하 | 힙 기본 (heapq) |
+| 3 | 이중우선순위큐 | 프로그래머스 Lv.3 | 중하 | 힙 응용 |
 
-**DFS / BFS**
+**시뮬레이션**
 
 | # | 문제 | 출처 | 난이도 | 유형 |
-|:-:|---|---|:-:|---|
-| 5 | [여행경로](https://school.programmers.co.kr/learn/courses/30/lessons/43164) | 프로그래머스 Lv.3 | 중 | DFS 백트래킹 + 사전순 |
-| 6 | [최장 경로 (2814)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7GOPPaAeMDFAXB) | SWEA D4 | 중 | DFS + 방문 복원 |
-| 7 | [단어 변환](https://school.programmers.co.kr/learn/courses/30/lessons/43163) | 프로그래머스 Lv.3 | 중 | BFS 최단 횟수 |
-| 8 | [홈 방범 서비스 (2117)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V61LqAf8DFAWu) | SWEA D4 | 중 | BFS + 완전탐색 |
+|---|---|---|---|---|
+| 4 | 디저트 카페 (2105) | SWEA 모의 | 중하 | |
+| 5 | 미생물 격리 (2382) | SWEA 모의 | 중 | |
+| 6 | 줄기세포배양 (5653) | SWEA 모의 | 중 | |
+| 7 | 원자 소멸 시뮬레이션 (5648) | SWEA 모의 | 중상 | |
 
+--- 시뮬레이션은 일부러 문제유형은 안써두었어용
 
 ### 도전 문제 🔥
 
 | 문제 | 출처 | 난이도 | 유형 |
-|---|---|:-:|---|
-| [보급로 (1249)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15QRX6APsCFAYD) | SWEA D4 | 중상 | 가중치 있는 최단경로 |
+|---|---|---|---|
+| 핀볼 게임 (5650) | SWEA 모의 | 상 | 경로 추적 + 구조물 규칙 구현 |
 
---- 도전문제는 모든 팀에서 공유하는 문제입니다.
-    다양한 풀이를 공유할 수 있도록 하겠습니다.
+--- 도전문제는 모든 팀에서 공유하는 문제입니다. 다양한 풀이를 공유할 수 있도록 하겠습니다.
 
+### 제출 방법 요약
 
-## 제출 방법 요약
-
-```bash
+```
 git switch main
 git pull
 git switch -c {깃허브 닉네임}/{week-N}
@@ -50,4 +46,4 @@ git push -u origin {깃허브 닉네임}/{week-N}
 # GitHub에서 "Compare & pull request" 클릭
 ```
 
-자세한 설명, 파일명 규칙, 오류 해결은 **[깃허브 사용 가이드](GITHUB_GUIDE.md)** 를 참고하세요.
+자세한 설명, 파일명 규칙, 오류 해결은 깃허브 사용 가이드 를 참고하세요.

@@ -12,18 +12,18 @@ SSAFY 알고리즘 스터디 · 5인 · 날짜 유동
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |---|---|---|---|---|
-| 1 | 서브트리 (5174) | SWEA D3 | 하 | 트리 순회 (DFS) |
-| 2 | 더 맵게 | 프로그래머스 Lv.2 | 하 | 힙 기본 (heapq) |
-| 3 | 이중우선순위큐 | 프로그래머스 Lv.3 | 중하 | 힙 응용 |
+| 1 | [서브트리 (5174)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWTay1Z64cQDFAVT&categoryId=AWTay1Z64cQDFAVT&categoryType=CODE&problemTitle=5174&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1) | SWEA D3 | 하 | 트리 순회 (DFS) |
+| 2 | [더 맵게](https://school.programmers.co.kr/learn/courses/30/lessons/42626) | 프로그래머스 Lv.2 | 하 | 힙 기본 (heapq) |
+| 3 | [이중우선순위큐](https://school.programmers.co.kr/learn/courses/30/lessons/42628) | 프로그래머스 Lv.3 | 중하 | 힙 응용 |
 
 **시뮬레이션**
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |---|---|---|---|---|
-| 4 | 디저트 카페 (2105) | SWEA 모의 | 중하 | |
-| 5 | 미생물 격리 (2382) | SWEA 모의 | 중 | |
-| 6 | 줄기세포배양 (5653) | SWEA 모의 | 중 | |
-| 7 | 원자 소멸 시뮬레이션 (5648) | SWEA 모의 | 중상 | |
+| 4 | [디저트 카페 (2105)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5VwAr6APYDFAWu) | SWEA 모의 | 중하 | |
+| 5 | [미생물 격리 (2382)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV597vbqAH0DFAVl) | SWEA 모의 | 중 | |
+| 6 | [줄기세포배양 (5653)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRJ8Bqfz0DFAUo) | SWEA 모의 | 중 | |
+| 7 | [원자 소멸 시뮬레이션 (5648)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRFInKex8DFAUo) | SWEA 모의 | 중상 | |
 
 --- 시뮬레이션은 일부러 문제유형은 안써두었어용
 
@@ -31,7 +31,7 @@ SSAFY 알고리즘 스터디 · 5인 · 날짜 유동
 
 | 문제 | 출처 | 난이도 | 유형 |
 |---|---|---|---|
-| 핀볼 게임 (5650) | SWEA 모의 | 상 | 경로 추적 + 구조물 규칙 구현 |
+| [핀볼 게임 (5650)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRF8s6ezEDFAUo) | SWEA 모의 | 상 | 경로 추적 + 구조물 규칙 구현 |
 
 --- 도전문제는 모든 팀에서 공유하는 문제입니다. 다양한 풀이를 공유할 수 있도록 하겠습니다.
 

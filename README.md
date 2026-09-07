@@ -20,8 +20,8 @@ SSAFY 알고리즘 스터디 · 5인 · 날짜 유동
 
 | 문제 | 출처 | 난이도 | 유형 |
 |---|---|---|---|
-| [정사각형 방 (1861)](https://swexpertacademy.com/main/code/problem/problemList.do) | SWEA D4 | 중상 | DFS + 메모이제이션 / DP |
-| [키 순서 (5643)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXQsLWKd5cDFAUo) | SWEA D4 | 중상 | 그래프 도달 가능성 (플로이드-워셜 / BFS·DFS) |
+| [정사각형 방 (1861)](https://swexpertacademy.com/main/code/problem/problemList.do) | SWEA D4 | 중상 | |
+| [키 순서 (5643)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXQsLWKd5cDFAUo) | SWEA D4 | 중상 | |
 
 --- 도전문제는 모든 팀에서 공유하는 문제입니다. 다양한 풀이를 공유할 수 있도록 하겠습니다.
 

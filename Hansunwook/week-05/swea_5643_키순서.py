@@ -18,26 +18,38 @@ for test_case in range(1, T + 1):
         else:
             information[a].add(b)
 
-    def keep(j):
-        if j in information.keys():
-            information[i].update(information[j])
-            for k in list(information[j]):
-                keep(k)
-        return
+    def keep(i):
+        # i에서 도달 가능한 모든 노드를 한 번의 순회로 모음 (중복 재탐색 방지)
+        visited = set()
+        stack = list(information.get(i, ()))
+        while stack:
+            j = stack.pop()
+            if j in visited:
+                continue
+            visited.add(j)
+            if j in information:
+                stack.extend(information[j])
+        if i not in information:
+            information[i] = set()
+        information[i].update(visited)
+
     for i in list(information.keys()):
-        #다시 안돌면 업데이트된 노드에서 또 연결된 부분을 못찾는 부분이 있어 끝까지 찾을 수 있도록 구현하게
-            #추가함.......근데 너무 깊어짐 이게 되나
-        for j in list(information[i]):
-            keep(j) 
+        keep(i)
     # print(information)
-    for i in range(1,M+1):
-        count = sum(1 for s in information.values() if i in s)
-        # print(i,"가 포함된 값들 개수: ",count)
+    # print(information)
+
+    cnt = [0] * (N + 2)
+    for s in information.values():
+        for x in s:
+            cnt[x] += 1
+
+    for i in range(1, N + 1):
+        count = cnt[i]
         if i in information.keys():
             # print("이친구는 자기것도 있슴")
             count += len(information[i])
-            # print(count)
-        if count >= M-1:
+        if count >= N - 1:
             # print(i,"#############하나찾음!!")
             result += 1
-    print(f"{test_case} {result}")
+
+    print(f"#{test_case} {result}")

@@ -4,26 +4,17 @@ SSAFY 알고리즘 스터디 · 5인 · 날짜 유동
 
 📖 처음 오셨나요? → 깃허브 사용 가이드
 
-## 📌 이번주 문제 (Week 05)
-
-> ⚠️ **축소 운영 안내**: 알고리즘 수업 기간으로 인해 이번 주는 기본 문제(3문제) 및 이번주 문제(4문제)로 축소하여 운영합니다.
+## 📌 이번주 문제 (Week 06)
 
 ### 기본 문제
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |---|---|---|---|---|
-| 1 | (추후 공지) | | | |
-| 2 | (추후 공지) | | | |
-| 3 | (추후 공지) | | | |
-
-### 도전 문제 🔥
-
-| 문제 | 출처 | 난이도 | 유형 |
-|---|---|---|---|
-| [정사각형 방 (1861)](https://swexpertacademy.com/main/code/problem/problemList.do) | SWEA D4 | 중상 | |
-| [키 순서 (5643)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXQsLWKd5cDFAUo) | SWEA D4 | 중상 | |
-
---- 도전문제는 모든 팀에서 공유하는 문제입니다. 다양한 풀이를 공유할 수 있도록 하겠습니다.
+| 1 | [격자판의 숫자 이어 붙이기 (2819)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7I5fgqEogDFAXB) | SWEA 모의 | 중하 | |
+| 2 | [벌꿀채취 (2115)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V4A46AdIDFAWu) | SWEA 모의 | 중하 | |
+| 3 | [보호 필름 (2112)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V1SYKAaUDFAWu) | SWEA 모의 | 중 | |
+| 4 | [점심 식사시간 (2383)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5-BEE6AK0DFAVl) | SWEA 모의 | 상 | |
+| 5 | [사람 네트워크 (1263)](https://swexpertacademy.com/main/code/problem/problemList.do) | SWEA D4 | 중 | |
 
 ### 제출 방법 요약
 

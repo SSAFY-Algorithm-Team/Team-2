@@ -4,25 +4,31 @@ def dfs(tree_parent,idx):
 
     global ans
 
-    ans+=1
-        
-        
-    for idx_new in tree_parent[idx]:
+    if(tree_parent[idx]==[]):
+        return ans
 
-        dfs(tree_parent,idx_new)
+
+    for idx_new in tree_parent[idx]:
         
+        ans+=1
+        return dfs(tree_parent,idx_new)
+        
+
+
+    
 
 T = int(input())
 
 for test_case in range(1, T + 1):
 
-    ans=0
+    ans=1
 
     E,N=map(int,input().split())
 
     lst_cmd=list(map(int,input().split()))
 
     lst_parent=[[] for _ in range(E+2)]
+    
     
     for i in range(0,2*E,2):
 
@@ -32,7 +38,7 @@ for test_case in range(1, T + 1):
 
         lst_parent[idx_parent].append(idx_child)
 
-    
+    print(lst_parent)
     dfs(lst_parent,N)
 
     print(f"#{test_case} {ans}")

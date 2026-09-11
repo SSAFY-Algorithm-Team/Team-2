@@ -18,7 +18,7 @@ for test_case in range(1, T + 1):
             b2 = b + rlud[i][1]
             for j in range(arr[a][b]):    
                 if 0<=a2<N and 0<=b2<M:
-                    print("add",arr[a2][b2],a2,b2)
+                    # print("add",arr[a2][b2],a2,b2)
                     sum_p += arr[a2][b2]
                     a2 += rlud[i][0]
                     b2 += rlud[i][1]
@@ -26,10 +26,10 @@ for test_case in range(1, T + 1):
     max = -1 
     for i in range(N):
         for j in range(M):
-            print("########",i,j)
+            # print("########",i,j)
             result = sum_pop(i,j)
-            print(result)
+            # print(result)
             if max < result:
-                print("!!!!!!!")
+                # print("!!!!!!!")
                 max = result
     print(f"#{test_case} {max}")

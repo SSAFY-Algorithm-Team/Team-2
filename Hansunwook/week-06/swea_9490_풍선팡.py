@@ -30,6 +30,6 @@ for test_case in range(1, T + 1):
             result = sum_pop(i,j)
             # print(result)
             if max < result:
-                # print("!!!!!!!")
+                # print("!!!!!!c")
                 max = result
     print(f"#{test_case} {max}")

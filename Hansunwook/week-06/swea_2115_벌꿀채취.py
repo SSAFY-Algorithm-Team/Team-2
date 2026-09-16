@@ -18,43 +18,43 @@ for test_case in range(1, T + 1):
     for i in range(N):
         h_arr.append([0]*N)
     def h_update(arr):
-        print("=========")
-        max_h = -1
-        
-        for i in range (len(arr)):
-            sum_h = arr[i]
-            hon = arr[i]*arr[i]
-            count = i+1
-            while(count < len(arr)):
-                sum_h += arr[count]
-                hon += arr[count]*arr[count]
-                if sum_h > C:
-                    sum_h -= arr[count]
-                    hon -= arr[count]*arr[count]
-                    break
-                print("더하는것",count)
-                count += 1
-                
-            if hon > max_h:
-                max_h = hon
+        n = len(arr)
+        max_h = 0
+
+        def dfs(idx, total, hon):
+            nonlocal max_h
+            if idx == n:
+                if total <= C and hon > max_h:
+                    max_h = hon
+                return
+            # idx번째 벌통을 채취하는 경우
+            dfs(idx + 1, total + arr[idx], hon + arr[idx] * arr[idx])
+            # idx번째 벌통을 채취 안 하는 경우
+            dfs(idx + 1, total, hon)
+        dfs(0, 0, 0)
         return max_h
 
     
     for i in range(N):
         for j in range(0,N-M+1):
-            print("##########",i,j)
+            # print("##########",i,j)
             arr = list(ori_arr[i][j:j+M])
-            print("시작",h_arr[i][j])
+            # print("시작",h_arr[i][j])
             h_arr[i][j] = h_update(arr)
-    print(h_arr)
+    # print(h_arr)
     max_h = -1
     for i in range(N):
-        for j in range(0,N-M):
-           sum_h =  h_arr[i][j]
-           for k in range(i,N):
-                for h in range(j,N-M):
-                    sum_h += h_arr[k][h]
-                    if max_h < sum_h:
-                        max_h = sum_h
+        for j in range(0,N-M+1):
+        #    print("i,j",i,j)
+           for k in range(N):
+                for h in range(N-M+1):
+                    if k > i or h >= j+M:
+                        # print("k,h",k,h)
+                        sum_h = h_arr[i][j] + h_arr[k][h]
+                        if max_h < sum_h:
+                            # print("업데이트: ",sum_h)
+                            # print(i,j)
+                            # print(k,h)
+                            max_h = sum_h
     result = max_h
     print(f"#{test_case} {result}")

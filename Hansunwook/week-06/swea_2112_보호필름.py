@@ -16,35 +16,57 @@ for test_case in range(1, T + 1):
     arr = []
     for i in range(D):
         arr.append(list(map(int,input().split())))
-
-    #만족하는지 확인하는 함수임
-    
-    def check(arr):
-        #일단 체크해야하는거 뒤집고 확인
-
-        arr_90 = list(zip(*arr))
-
-        for i in arr_90:
-            a = i[0]
-            count = 0
-            tf = False
-            for j in i:
-                if count >= K:
-                    tf = True
-                    continue
-                if a == j:
-                    count += 1
-                else:
-                    count = 1
-                    a = j
-
-            if tf == False:
-                return tf
-        return tf
- 
     tf = [False]
     min_count = [K]
     count = [0]
+
+
+    # #만족하는지 확인하는 함수임
+    # def check(arr):
+    #     #일단 체크해야하는거 뒤집고 확인
+    #     arr_90 = list(zip(*arr))
+    #     for i in arr_90:
+    #         tf = check_one(i)
+    #         if tf == False:
+    #             return False
+    #     return True
+
+    # def check_one(arr):
+    #     a = arr[0]
+    #     count = 0
+    #     for j in arr:
+    #         if count >= K:
+    #             return True
+    #         if a == j:
+    #             count += 1
+    #         else:
+    #             count = 1
+    #             a = j
+    #     return False
+
+    def check1(arr_90,c):
+
+            if(K==1):
+                return True
+            
+            rune=1
+
+            for row in range(1,D):
+                if(arr_90[row][c]==arr_90[row-1][c]):
+                    rune+=1
+                    if(rune==K):
+                        return True
+
+                else:
+                    rune=1
+
+            return False
+
+    def check(arr):
+
+        return all(check1(arr,c) for c in range(W))
+
+
 
     #dfs로 전부 방문하고 돌아오는 코드임
     def dfs(c):
@@ -58,18 +80,16 @@ for test_case in range(1, T + 1):
                     min_count[0] = count[0]
             return
 
+        # 배열 밖에서 선언하면 시간 좀 줄어듬 굳이 안에서 복사할 필요 없음
+        # 그리고 복사는 전부 말고 딱 한줄만 복사해서 되돌리기 
         original=arr[c][:]
-        
         for i in range(2):
-        
             arr[c] =  [i]*W
             count[0] += 1
             dfs(c+1)
             count[0] -= 1
             arr[c] =  original[:]
-
         dfs(c+1)
-
 
     if check(arr):
         result = 0

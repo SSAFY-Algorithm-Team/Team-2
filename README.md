@@ -12,16 +12,16 @@ SSAFY 알고리즘 스터디 · 5인 · 날짜 유동
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |---|---|---|---|---|
-| 1 | 준환이의 양팔저울 (3234) | SWEA D3 | 중하 | |
-| 2 | 컨택트 (1238) | SWEA D4 | 중하 | |
-| 3 | 디저트 카페 (2105) | SWEA 모의 | 중 | |
+| 1 | [준환이의 양팔저울 (3234)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=3234) | SWEA D3 | 중하 | |
+| 2 | [컨택트 (1238)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1238) | SWEA D4 | 중하 | |
+| 3 | [디저트 카페 (2105)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=2105) | SWEA 모의 | 중 | |
 
 **기업 코테**
 
 | # | 문제 | 출처 | 난이도 | 유형 |
 |---|---|---|---|---|
-| 4 | 순위 검색 | 프로그래머스 Lv.2 | 중 | |
-| 5 | 불량 사용자 | 프로그래머스 Lv.3 | 중 | |
+| 4 | [순위 검색](https://school.programmers.co.kr/learn/courses/30/lessons/72412) | 프로그래머스 Lv.2 | 중 | |
+| 5 | [불량 사용자](https://school.programmers.co.kr/learn/courses/30/lessons/64064) | 프로그래머스 Lv.3 | 중 | |
 
 --- 유형은 이번주도 일부러 비워두었습니다
 

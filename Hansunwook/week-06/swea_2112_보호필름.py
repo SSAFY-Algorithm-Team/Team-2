@@ -18,9 +18,12 @@ for test_case in range(1, T + 1):
         arr.append(list(map(int,input().split())))
 
     #만족하는지 확인하는 함수임
+    
     def check(arr):
         #일단 체크해야하는거 뒤집고 확인
+
         arr_90 = list(zip(*arr))
+
         for i in arr_90:
             a = i[0]
             count = 0
@@ -34,30 +37,39 @@ for test_case in range(1, T + 1):
                 else:
                     count = 1
                     a = j
+
             if tf == False:
                 return tf
         return tf
+ 
     tf = [False]
     min_count = [K]
     count = [0]
+
     #dfs로 전부 방문하고 돌아오는 코드임
     def dfs(c):
         #가지치기
         if min_count[0] <= count[0]:
             return
+        
         if c >= D:
             if check(arr):
                 if min_count[0] > count[0]:
                     min_count[0] = count[0]
             return
+
+        original=arr[c][:]
+        
         for i in range(2):
-            arr2 = arr[:]
+        
             arr[c] =  [i]*W
             count[0] += 1
             dfs(c+1)
             count[0] -= 1
-            arr[c] =  arr2[c]
+            arr[c] =  original[:]
+
         dfs(c+1)
+
 
     if check(arr):
         result = 0

@@ -4,17 +4,26 @@ SSAFY 알고리즘 스터디 · 5인 · 날짜 유동
 
 📖 처음 오셨나요? → 깃허브 사용 가이드
 
-## 📌 이번주 문제 (Week 06)
+## 📌 이번주 문제 (Week 07)
 
 ### 기본 문제
 
+**탐색**
+
 | # | 문제 | 출처 | 난이도 | 유형 |
 |---|---|---|---|---|
-| 1 | [격자판의 숫자 이어 붙이기 (2819)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7I5fgqEogDFAXB) | SWEA 모의 | 중하 | |
-| 2 | [벌꿀채취 (2115)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V4A46AdIDFAWu) | SWEA 모의 | 중하 | |
-| 3 | [보호 필름 (2112)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V1SYKAaUDFAWu) | SWEA 모의 | 중 | |
-| 4 | [점심 식사시간 (2383)](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5-BEE6AK0DFAVl) | SWEA 모의 | 상 | |
-| 5 | [사람 네트워크 (1263)](https://swexpertacademy.com/main/code/problem/problemList.do) | SWEA D4 | 중 | |
+| 1 | 준환이의 양팔저울 (3234) | SWEA D3 | 중하 | |
+| 2 | 컨택트 (1238) | SWEA D4 | 중하 | |
+| 3 | 디저트 카페 (2105) | SWEA 모의 | 중 | |
+
+**기업 코테**
+
+| # | 문제 | 출처 | 난이도 | 유형 |
+|---|---|---|---|---|
+| 4 | 순위 검색 | 프로그래머스 Lv.2 | 중 | |
+| 5 | 불량 사용자 | 프로그래머스 Lv.3 | 중 | |
+
+--- 유형은 이번주도 일부러 비워두었습니다
 
 ### 제출 방법 요약
 

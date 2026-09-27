@@ -41,4 +41,6 @@ for test_case in range(1,T+1):
                 lst_stair.append((r,c))
 
     
+
+
     print(combination(3))

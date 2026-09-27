@@ -14,7 +14,7 @@ def factorial(n):
 
 def permutation(n,r): 
 
-    return factorial(n)//(factorial(n-r))    
+    return factorial(n) / (factorial(n-r+1))    
 
 def combination(n,r):
 
@@ -29,13 +29,11 @@ def combination(n,r):
 
         if(len(path)==r):
 
-            sum= sum(path)
+            sum_path= sum(path)
 
-            print(path)
-            
-            if(2*sum>=sum_lst):
+            if(2*sum_path >= sum_lst):
                 ans+=permutation(n,r)
-            
+
             return
         
         for i in range(start,N):
@@ -45,7 +43,6 @@ def combination(n,r):
             path.pop()
 
     backtrack(0)
-
 
 
 for test_case in range(1,T+1):

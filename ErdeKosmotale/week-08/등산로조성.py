@@ -4,16 +4,15 @@
 # K만큼 깎는 공사 가능
 # bfs로 가장 깊게 갈 수 있는 경우 탐색 함수
 
-
 from collections import deque
 
 DIRECTION = [(-1,0),(1,0), (0,-1), (0,1)] # 상 하 좌 우
 
-def bfs(lst_t,row,col):
+def bfs(lst_t, row, col):
 
-    lst= [row[:] for row in lst_t]
+    lst = [row[:] for row in lst_t]
 
-    max_depth = 0
+    max_depth = -30
     queue = deque()
     queue.append((row,col,0))
     
@@ -64,9 +63,10 @@ for test_case in range(1,T+1):
 
     for r in range(N):
         for c in range(N):
+            max_grid = find_max_grid(lst)
             for i in range(0,K+1):
                 lst[r][c]-=i
-                max_grid = find_max_grid(lst)
+                
 
                 for row,col in max_grid:
                     ans=max(ans,bfs(lst,row,col))

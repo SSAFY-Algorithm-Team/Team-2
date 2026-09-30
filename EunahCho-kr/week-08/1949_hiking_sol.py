@@ -1,6 +1,6 @@
 # 1949 SWEA 등산로  조성
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PoOKKAPIDFAUq&
-# 시간 3:40 ~ / 시도
+# 시간 2h / 시도
 
 """
 등산로는 가장 높은 곳에서 시작
@@ -11,14 +11,7 @@
 가장 긴 등산로 찾기
 """
 
-"""
-1. 가장 높은 등산로 찾기
-2. 높은곳1부터 시작 -> bfs
-3. 높은곳2, 3, ... -> 최대값 계속 갱신 ! 
-"""
-
 import sys
-# from collections import deque
 sys.stdin = open('1949_input.txt', 'r')
 
 
@@ -34,29 +27,44 @@ def find_max(field):
 
 
 def search(n, k, start, field):
-    # print()
-    x, y = start
+    x, y = start # 시작 좌표 (가장 높은 곳)
     is_used = False  # 산 깎았는지
-    res = 0
+    res = 0 # 최종 정답
+
     def dfs(x, y, h, d):
         nonlocal res, is_used
-        # print(x, y, h, d)
-        res = max(res, d)
 
-        if d == n * n + 1:
+        res = max(res, d) # 매번 최대값으로 갱신
+
+        if d == n * n + 1:  # 끝까지 돌았으면 return ==> 혹시 몰라서 넣었는데 visited땜에 필요 없을 듯
             return
-
+        
         for dx, dy in DIRECTIONS:
             nx, ny = x + dx, y + dy
-            if 0 <= nx < n and 0 <= ny < n:
+            # 공통 조건 : 격자 안에 있고, 방문 안했어야함
+            if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny]:
+                # 우선 조건 : 새로운 곳이 현재보다 낮아야함
                 if h > field[nx][ny]:
+                    visited[nx][ny] = True
                     dfs(nx, ny, field[nx][ny], d + 1)
-                elif not is_used:
-                    if h > field[nx][ny] - k:
-                        dfs(nx, ny, field[nx][ny] - k, d + 1)
+                    visited[nx][ny] = False
+                # 우선 조건에서 못 들어갔다면, k번 깎을 수 있는 기회 1번
+                elif not is_used: # 아직 기회 안썼으면
+                    # 1 ~ k번 한번씩 깎아봄
+                    for i in range(1, k + 1):
+                        new_h = field[nx][ny] - i
                         is_used = True
-                    
+                        # 깎은 높이가 현재보다 낮다면
+                        if h > new_h:
+                            visited[nx][ny] = True
+                            dfs(nx, ny, new_h, d + 1)
+                            visited[nx][ny] = False
+                        # 다 탐색했으면(깎아봤으면) 다시 기회 부여 => 봉우리를 깎은 좌표인 nx, ny에서 빠져나왔으므로
+                        is_used = False
+
+    visited[x][y] = True 
     dfs(x, y, field[x][y], 1)
+    visited[x][y] = False
 
     return res
 
@@ -65,7 +73,7 @@ T = int(input())
 for tc in range(1, T + 1):
     n, k = map(int, input().split())
     field = [list(map(int, input().split())) for _ in range(n)]
-    # if tc == 1:
+    visited = [[0] * n for _ in range(n)]
     best = 0
     for start in find_max(field):
         res = search(n, k, start, field)
@@ -73,6 +81,10 @@ for tc in range(1, T + 1):
     print(f"#{tc} {best}")
 
 """
+BFS 시도했는데 실패함!!
+
+from collections import deque
+
 def search(n, k, start, field):
     x, y = start
     # print(start)

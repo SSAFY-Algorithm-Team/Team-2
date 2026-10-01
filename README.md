@@ -28,8 +28,6 @@
 | 1 | [이모티콘 할인행사](https://school.programmers.co.kr/learn/courses/30/lessons/150368) | 2023 KAKAO BLIND · 프로그래머스 Lv.2 | 중하 |
 | 2 | [거리두기 확인하기](https://school.programmers.co.kr/learn/courses/30/lessons/81302) | 2021 카카오 채용연계형 인턴십 · 프로그래머스 Lv.2 | 중 |
 
---- 카카오 문제는 모든 팀에서 공유하는 문제입니다.
-    다양한 풀이를 공유할 수 있도록 하겠습니다.
 
 ---
 
@@ -51,7 +49,6 @@
 | 9 | [고양이와 개는 몇 마리 있을까](https://school.programmers.co.kr/learn/courses/30/lessons/59040) | Lv.2 | `GROUP BY` |
 | 10 | [동명 동물 수 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/59041) | Lv.2 | `HAVING` |
 
-> 💡 8번은 이름이 `NULL`인 동물을 세면 안 됩니다. `COUNT(*)`와 `COUNT(컬럼)`의 차이를 확인해 보세요.
 
 ---
 

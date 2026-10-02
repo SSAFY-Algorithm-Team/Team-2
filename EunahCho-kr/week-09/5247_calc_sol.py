@@ -1,6 +1,6 @@
 # 5247 SWEA 연산
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWUS1FaKImUDFAVT&categoryId=AWUS1FaKImUDFAVT&categoryType=CODE&problemTitle=5247&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1&&&&&&&&&
-# 
+# 시간 2h 시도 4
 
 """
 자연수 N에 몇 번의 연산을 통해 다른 자연수 M을 만들려고 한다.
@@ -20,6 +20,60 @@ DFS
                                             10 -> 29 / 10 * 2 * 2 - 10 - 1
 - -10보다 작아지면 종료
 - 최종 목적지보다 2배 크면 의미 없다 ? 
+-> max recursion
+"""
+"""
+BFS
+"""
+
+
+import sys
+from collections import deque
+
+sys.stdin = open('5247_input.txt', 'r')
+
+
+OP = ["*2", "+1", "-10", "-1"]
+
+
+def calc(curr, op):
+    if op == "+1":
+        return curr + 1
+    elif op == "-1":
+        return curr - 1
+    elif op == "*2":
+        return curr * 2
+    elif op == "-10":
+        return curr - 10
+
+
+def search(n, m):
+
+    queue = deque([(n, 0)])
+    nums[n] = 1
+
+    while queue:
+        # print(stack)
+        curr, cnt = queue.popleft()
+        for op in OP:
+            calculated = calc(curr, op)
+            if 0 < calculated <= 1000000 and not nums[calculated]:
+                queue.append((calculated, cnt + 1))
+                nums[calculated] = 1
+                if calculated == m:
+                    return cnt + 1
+
+    return -1
+
+
+T = int(input())
+for tc in range(1, T + 1):
+    n, m = map(int, input().split())
+    nums = [False] * 1000001
+    cnt = search(n, m)
+    print(f"#{tc} {cnt}")
+
+
 """
 
 import sys
@@ -56,15 +110,8 @@ def search(curr, cnt):
         return
 
     for op in OP:
-        if curr > m and op in ["+1", "*2"]:
-            continue
-        if curr <= 0 and op != "+1":
-            continue
-        
-        print(op, curr)
+        # print(op, curr)
         calculated = calc(curr, op)
-        
-
         search(calculated, cnt + 1)
 
 
@@ -75,3 +122,4 @@ for tc in range(1, T + 1):
     best = float('inf')
     search(n, 0)
     print(f"#{tc} {best}")
+"""

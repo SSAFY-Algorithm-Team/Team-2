@@ -5,7 +5,7 @@ for test_case in range(1, T + 1):
     R,C = map(int,input().split())
     arr = []
     for i in range(R):
-          arr.append(list(map(input())))
+        arr.append(list(map(input())))
     print(arr)
     #초기 접근
     # 일단 @에 접근 가능한지 여부를 따지면 됨
@@ -17,33 +17,43 @@ for test_case in range(1, T + 1):
         if move_key == "<":
             return 3
         elif move_key == ">":
-              return 0
+            return 0
         elif move_key == "^":
-              return 1
+            return 1
         elif move_key == "v":
-              return 2
+            return 2
         elif move_key == "_":
             if move_vel == 0:
-                  return 0
+                return 0
             else:
-                  return 3
+                return 3
         elif move_key == "|":
-                    if move_vel == 0:
-                          return 2
-                    else:
-                          return 1
+            if move_vel == 0:
+                return 2
+            else:
+                return 1
         # elif move_key == "?":
         #       return 
         number = arr[0][0]
         move_now = 0
         now = arr[0][1]
+        i,j = 1,0
         while(1):
             if now == '@':
-                  result = True
-                  break
-            
-                    
-
-    
-
+                result = True
+                break
+            elif now == '-':
+                if number <= 0:
+                    number = 15
+                else:
+                    number -= 1
+            elif now == '+':
+                if number >= 15:
+                    number = 0
+                else:
+                    number += 1
+            else:
+                move_chang(now,number)
+            # now = arr[][]
+                
     print(f"#{test_case} {result}")

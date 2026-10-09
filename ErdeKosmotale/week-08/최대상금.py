@@ -4,10 +4,10 @@ def dfs(idx):
 
     global ans_num
 
-    if(num_str == optimized_str):
-        print(optimized_str)
-        ans_num = int(''.join(optimized_str))
-        return 
+    # if(num_str == optimized_str):
+    #     #print(optimized_str)
+    #     ans_num = int(''.join(optimized_str))
+    #     return 
 
     if(idx == n_ex):
 
@@ -21,7 +21,7 @@ def dfs(idx):
 
     for i in range(len(num_str)):
         for j in range(len(num_str)):
-
+            if(i==j):continue
             num_str[i], num_str[j] = num_str[j], num_str[i]
             dfs(idx+1)
             num_str[j], num_str[i] = num_str[i], num_str[j]

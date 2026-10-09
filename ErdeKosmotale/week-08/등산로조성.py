@@ -4,6 +4,11 @@
 # K만큼 깎는 공사 가능
 # bfs로 가장 깊게 갈 수 있는 경우 탐색 함수
 
+
+
+# 전 이걸 문제 오류라고 생각합니다. 정말정말 !
+
+
 from collections import deque
 
 DIRECTION = [(-1,0),(1,0), (0,-1), (0,1)] # 상 하 좌 우
@@ -67,7 +72,6 @@ for test_case in range(1,T+1):
             for i in range(0,K+1):
                 lst[r][c]-=i
                 
-
                 for row,col in max_grid:
                     ans=max(ans,bfs(lst,row,col))
 

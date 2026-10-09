@@ -6,18 +6,18 @@
 
 ---
 
-## 📌 이번주 문제 (Week 09)
+## 📌 이번주 문제 (Week 10)
 
-**주제: 탐색 (DFS / BFS / 백트래킹)**
+**주제: 시뮬레이션 / 구현**
 
 ### 기본 문제
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [미로의 거리 (5105)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5105) | SWEA D3 | 하 |
-| 2 | [연산 (5247)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5247) | SWEA D4 | 중 |
-| 3 | [혁진이의 프로그램 검증 (1824)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1824) | SWEA D4 | 중 |
-| 4 | [최소 생산 비용 (5209)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5209) | SWEA D3 | 중 |
+| 1 | [상호의 배틀필드 (1873)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1873) | SWEA D3 | 하 |
+| 2 | [특이한 자석 (4013)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=4013) | SWEA 모의 | 중하 |
+| 3 | [활주로 건설 (4014)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=4014) | SWEA 모의 | 중 |
+| 4 | [무선 충전 (5644)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5644) | SWEA 모의 | 중 |
 
 > 💡 번호 순서대로 푸시면 난이도가 완만하게 올라갑니다.
 
@@ -25,8 +25,8 @@
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [이모티콘 할인행사](https://school.programmers.co.kr/learn/courses/30/lessons/150368) | 2023 KAKAO BLIND · 프로그래머스 Lv.2 | 중하 |
-| 2 | [거리두기 확인하기](https://school.programmers.co.kr/learn/courses/30/lessons/81302) | 2021 카카오 채용연계형 인턴십 · 프로그래머스 Lv.2 | 중 |
+| 1 | [프렌즈4블록](https://school.programmers.co.kr/learn/courses/30/lessons/17679) | 2018 KAKAO BLIND · 프로그래머스 Lv.2 | 중하 |
+| 2 | [자물쇠와 열쇠](https://school.programmers.co.kr/learn/courses/30/lessons/60059) | 2020 KAKAO BLIND · 프로그래머스 Lv.3 | 중 |
 
 
 ---

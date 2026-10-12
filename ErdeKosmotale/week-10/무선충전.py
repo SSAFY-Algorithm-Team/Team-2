@@ -52,8 +52,6 @@ for test_case in range(1, T + 1):
     row_A = 0
     col_A = 0
 
-    print(A_grid)
-
     for cmd in A_route:
 
         if(cmd == 1):
@@ -97,14 +95,46 @@ for test_case in range(1, T + 1):
         else:
             B_grid.append(list(lst[row_B][col_B])) 
 
-    print(A_grid)
-    print(B_grid)
+    score = 0
+
+    
+    for i in range(M):
+
+        A = A_grid[i]
+        B = B_grid[i]
+
+        A_max = 0
+        B_max = 0
+        score_sum = 0
+
+        if(A==-1 and B== -1):
+            continue
+
+        elif(A==-1 and B != -1):
+
+            for j in range(len(B)):
+                B_max = max(B_max,BC[j])
+
+        elif(A!=-1 and B == -1):
+
+            for j in range(len(A)):
+                A_max = max(A_max,BC[j])
+
+        else:
+
+            for j in range(len(A)):
+                for k in range(len(B)):
+
+                    if(BC[j] == BC[k]):
+                        score_sum = max(score_sum,BC[j])
+
+                    else:
+                        score_sum = max(score_sum, BC[j]+BC[k])    
+                    
+        score += A_max + B_max + score_sum
 
 
-                  
-
-        
-
+    print(f"#{test_case} {score}")
 
 
             

@@ -1,6 +1,6 @@
 # SWEA 2117 홈 방범 서비스
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V61LqAf8DFAWu
-# 시간 4h / 시도 2
+# 시간 4h 30m / 시도 3
 
 from collections import deque
 
@@ -24,6 +24,8 @@ def bfs(n, k, homes, starts):
     visited = [[False] * n for _ in range(n)]
     visited[start_r][start_c] = True
     cnt = 0
+    if homes[start_r][start_c]: # 첫 위치에 집이 있다면, 그거도 세야함
+        cnt += 1
 
     while queue:
         r, c = queue.popleft()
@@ -40,7 +42,7 @@ def bfs(n, k, homes, starts):
 
 def solve(n, m, homes):
     if n % 2 == 0:
-        k = n + 3
+        k = n + 1
     else:
         k = n
 
@@ -51,8 +53,7 @@ def solve(n, m, homes):
             for y in range(n):
                 home_cnt = bfs(n, k, homes, (x, y))
                 if calculate(k, home_cnt, m):
-                    max_cnt = max(max_cnt, home_cnt) # 첫 위치에서 시도
-                    # 가지치기 하고 싶다!!!!!!!!!!!!!
+                    max_cnt = max(max_cnt, home_cnt)
         k -= 1
 
     return max_cnt  

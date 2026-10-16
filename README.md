@@ -6,18 +6,19 @@
 
 ---
 
-## 📌 이번주 문제 (Week 10)
+## 📌 이번주 문제 (Week 11)
 
-**주제: 시뮬레이션 / 구현**
+**주제: DFS / BFS**
 
 ### 기본 문제
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [상호의 배틀필드 (1873)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1873) | SWEA D3 | 하 |
-| 2 | [특이한 자석 (4013)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=4013) | SWEA 모의 | 중하 |
-| 3 | [활주로 건설 (4014)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=4014) | SWEA 모의 | 중 |
-| 4 | [무선 충전 (5644)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5644) | SWEA 모의 | 중 |
+| 1 | [미로1 (1226)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1226) | SWEA D4 | 하 |
+| 2 | [행렬찾기 (1258)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1258) | SWEA D4 | 중하 |
+| 3 | [수지의 수지 맞는 여행 (7699)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=7699) | SWEA D4 | 중하 |
+| 4 | [물놀이를 가자 (10966)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=10966) | SWEA D4 | 중 |
+| 5 | [치즈 도둑 (7733)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=7733) | SWEA D4 | 중 |
 
 > 💡 번호 순서대로 푸시면 난이도가 완만하게 올라갑니다.
 
@@ -25,8 +26,7 @@
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [프렌즈4블록](https://school.programmers.co.kr/learn/courses/30/lessons/17679) | 2018 KAKAO BLIND · 프로그래머스 Lv.2 | 중하 |
-| 2 | [자물쇠와 열쇠](https://school.programmers.co.kr/learn/courses/30/lessons/60059) | 2020 KAKAO BLIND · 프로그래머스 Lv.3 | 중 |
+| 1 | [경주로 건설](https://school.programmers.co.kr/learn/courses/30/lessons/67259) | 2020 카카오 인턴십 · 프로그래머스 Lv.3 | 중 |
 
 
 ---

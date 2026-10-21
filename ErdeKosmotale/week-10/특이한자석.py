@@ -1,116 +1,94 @@
 
+# 자석 2번이 오른쪽 6번이 왼쪽 빨간색이 0번으로 시작
+# 시계방향으로 돌면 현재 있는 자석이 좌표가 작아지는 방향으로 됨
+# 반시계방향으로 돌면 현재있는 자석이 좌표가 커지는 방향으로 감
+# 시계방향 1 반시계방향 -1
 
-# 2번의 좌표 << right
-# 6번의 좌표 << left
+def dfs(num_magnet,direction):
 
-# 특정 거 돌리면 그거보다 
-# 1 작은거 오른쪽이랑 
-# 1 큰 거 왼쪽 봐야해
+    if(num_magnet==-1 or num_magnet == 4):
+        return
 
-# 일단 한 번 못풀었음
+    # if visited[num_magnet]:
+    #     return
 
+    visited[num_magnet] = True
+
+    left_magnet = num_magnet - 1
+    right_magnet = num_magnet + 1
+
+    now_left  = lst_magnet[num_magnet][left_right_red[num_magnet][0]]
+    now_right = lst_magnet[num_magnet][left_right_red[num_magnet][1]]
+
+    if(direction == 1):
+
+        left_right_red[num_magnet][0] = left_right_red[num_magnet][0] -1 if left_right_red[num_magnet][0]!=0 else 7
+        left_right_red[num_magnet][1] = left_right_red[num_magnet][1] -1 if left_right_red[num_magnet][1]!=0 else 7
+        left_right_red[num_magnet][2] = left_right_red[num_magnet][2] -1 if left_right_red[num_magnet][2]!=0 else 7
+
+    else:
+         
+        left_right_red[num_magnet][0] = left_right_red[num_magnet][0] +1 if left_right_red[num_magnet][0]!=7 else 0
+        left_right_red[num_magnet][1] = left_right_red[num_magnet][1] +1 if left_right_red[num_magnet][1]!=7 else 0
+        left_right_red[num_magnet][2] = left_right_red[num_magnet][2] +1 if left_right_red[num_magnet][2]!=7 else 0
+
+    
+
+    if(left_magnet>=0):
+
+        left_right = lst_magnet[left_magnet][left_right_red[left_magnet][1]] # 왼쪽 자석의 오른쪽 부분
+
+        if(left_right != now_left and not visited[left_magnet]):
+            dfs(left_magnet,direction*(-1))
+
+
+    if(right_magnet < 4):
+
+        right_left = lst_magnet[right_magnet][left_right_red[right_magnet][0]]
+
+        if(right_left != now_right and not visited[right_magnet]):
+            dfs(right_magnet, direction * (-1))
+
+
+    
+
+        
 T = int(input())
 
 
+for test_case in range(1 , T + 1):
+
+    K = int(input())  # 자석 돌리는 총 수
+
+    lst_magnet = []
+    for _ in range(4):
+
+        lst_magnet.append(list(map(int,input().split())))
 
 
+    #lst_magnet = [list(map(int,input().split)) for _ in range(4)]
 
-for test_case in range(1,T + 1):
-
-    K = int(input())
-
-    lst_magnet = [list(map(int,input().split())) for _ in range(4)]
-
-    left_lst  =  [ -1,6,6,6] # 왼쪽들
-    right_lst =  [ 2,2,2,-1] # 오른쪽들
-    red_lst   =  [0,0,0,0]   # 빨간색 부분
+    left_right_red = [[6,2,0] for _ in range(4)]
 
     for _ in range(K):
 
-        magnet, direction = map(int,input().split())
-        magnet -=1
+        magnet_now, direction = map(int,input().split())
 
+        magnet_now -=1
 
-        left_magnet = magnet - 1
-        right_magnet = magnet + 1
-
-        left_flag = 0    # 1이면 돌림, -1이면 반시계방향으로 돌림, 0이면 안돌림
-        right_flag = 0   # 1이면 돌림, -1이면 반시계방향으로 돌림, 0이면 안돌림
-
+        visited= [0]*4
+     
 
         
-        if(left_magnet != -1):
-
-            if(lst_magnet[left_magnet][right_lst[left_magnet]] != lst_magnet[magnet][left_lst[magnet]]):
-
-                left_flag = direction * (-1)
-                
-
-        if(right_magnet != 4):
-            
-            if(lst_magnet[right_magnet][left_lst[right_magnet]] != lst_magnet[magnet][right_lst[magnet]]):
-
-                right_flag = direction * (-1)
-
-        
-    ############################################# 여기까지 왼쪽 오른쪽 돌리는 방향 정하기#####################
-
-    ############ 아래부터는 실제로 돌리기 #################################################################
-
-        if(direction == -1):
-
-            left_lst[magnet] = (left_lst[magnet]+1) %8
-            right_lst[magnet] = (right_lst[magnet]+1) %8
-            red_lst[magnet] = (red_lst[magnet]+1) %8
-
-        elif(direction == 1):
-
-            left_lst[magnet] = (left_lst[magnet]-1) if left_lst[magnet] != 0 else 7 
-            right_lst[magnet] = (right_lst[magnet]-1) if right_lst[magnet] != 0 else 7
-            red_lst[magnet] = (red_lst[magnet]-1) if red_lst[magnet] != 0 else 7
-
-        if(left_flag == -1):
-            
-            left_lst[left_magnet] = (left_lst[left_magnet]+1) if left_lst[left_magnet] != 7 else 0 
-            right_lst[left_magnet] = (right_lst[left_magnet]+1) if right_lst[left_magnet] != 7 else 0
-            red_lst[left_magnet] = (red_lst[left_magnet]+1) if red_lst[left_magnet] != 7 else 0
-        
-        elif(left_flag ==1):
-            left_lst[left_magnet] = (left_lst[left_magnet]-1) if left_lst[left_magnet] != 0 else 7 
-            right_lst[left_magnet] = (right_lst[left_magnet]-1) if right_lst[left_magnet] != 0 else 7
-            red_lst[left_magnet] = (red_lst[left_magnet]-1) if red_lst[left_magnet] != 0 else 7
-
-            
-        if(right_flag == -1):
-            left_lst[right_magnet] = (left_lst[right_magnet]+1) if left_lst[right_magnet] != 7 else 0 
-            right_lst[right_magnet] = (right_lst[right_magnet]+1) if right_lst[right_magnet] != 7 else 0
-            red_lst[right_magnet] = (red_lst[right_magnet]+1) if red_lst[right_magnet] != 7 else 0
-
-        if(right_flag == 1):
-            left_lst[right_magnet] = (left_lst[right_magnet]-1) if left_lst[right_magnet] != 0 else 7 
-            right_lst[right_magnet] = (right_lst[right_magnet]-1) if right_lst[right_magnet] != 0 else 7
-            red_lst[right_magnet] = (red_lst[right_magnet]-1) if red_lst[right_magnet] != 0 else 7
-
+        dfs(magnet_now,direction)
 
     score = 0
 
-    for i in range(4):
+    for num_magnet in range(4):
 
-        if(lst_magnet[i][red_lst[i]]==1):
+        if(lst_magnet[num_magnet][left_right_red[num_magnet][2]]== 1):
 
-            score += 2**(i)
+            score += 2**(num_magnet)
 
     print(f"#{test_case} {score}")
-    
-    
-    # first_left   = -1
-    # first_right  = 2
 
-    # second_left  = 6
-    # second_right = 2
-
-    # third_left   = 6
-    # third_right  = 2
-
-    # fourth_left  = 6
-    # fourth_right = -1

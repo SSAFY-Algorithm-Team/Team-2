@@ -97,8 +97,7 @@ for test_case in range(1, T + 1):
 
     score = 0
 
-    
-    for i in range(M):
+    for i in range(M+1):
 
         A = A_grid[i]
         B = B_grid[i]
@@ -125,7 +124,11 @@ for test_case in range(1, T + 1):
             for j in range(len(A)):
                 for k in range(len(B)):
 
+<<<<<<< HEAD
                     if(BC[A[j]] == BC[B[k]]):
+=======
+                    if(A[j] == B[k]):
+>>>>>>> 002f0bc0a0a3c606ed25b89320bffd4039752c77
                         score_sum = max(score_sum,BC[A[j]])
 
                     else:

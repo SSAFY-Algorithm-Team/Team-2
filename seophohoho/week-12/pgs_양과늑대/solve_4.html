@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>양과 늑대 · 4번 풀이 완전 이해</title>
+<style>
+:root{
+  --bg:#f7f6f2; --card:#ffffff; --ink:#1f2328; --sub:#5b636d; --line:#e2e4e8;
+  --green:#2b8a3e; --green-soft:#ebfbee; --on-green:#ffffff;
+  --blue:#1971c2; --blue-soft:#e7f5ff;
+  --amber:#e8590c; --amber-soft:#fff4e6;
+  --red:#c92a2a; --red-soft:#fff0f0;
+  --code-bg:#f6f8fa; --mark:#fff3bf; --kw:#cf222e; --nm:#0550ae;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121315; --card:#1b1d20; --ink:#e9ecef; --sub:#a3aab2; --line:#30343a;
+    --green:#40c057; --green-soft:#1c3122; --on-green:#0b1f10;
+    --blue:#4dabf7; --blue-soft:#14283a;
+    --amber:#ff922b; --amber-soft:#3a2914;
+    --red:#ff6b6b; --red-soft:#3a1c1c;
+    --code-bg:#15171a; --mark:#4a4220; --kw:#ff7b72; --nm:#79c0ff;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;word-break:keep-all}
+main{max-width:1180px;margin:0 auto;padding:36px 20px 90px}
+h1{font-size:32px;line-height:1.3;margin:0 0 10px}
+h2{font-size:23px;line-height:1.35;margin:0 0 4px;display:flex;gap:12px;align-items:center}
+h2 .no{flex:none;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:16px}
+h3{font-size:18px;margin:22px 0 8px}
+p{margin:8px 0}
+ul.plain{margin:8px 0;padding-left:22px}
+ul.plain li{margin:3px 0}
+section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;margin:22px 0}
+.lead{color:var(--sub);margin:4px 0 18px}
+.muted{color:var(--sub)}
+.small{font-size:14px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+nav.toc a{color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--card);padding:5px 13px;border-radius:999px;font-size:14.5px}
+nav.toc a:hover{border-color:var(--sub)}
+.grid2{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:start}
+.grid-code{display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:880px){.grid2,.grid-code{grid-template-columns:1fr}.grid2>*,.grid-code>*{min-width:0}}
+.sticky{position:sticky;top:14px}
+.callout{border-left:4px solid var(--blue);background:var(--blue-soft);padding:12px 18px;border-radius:0 12px 12px 0;margin:16px 0}
+.callout.key{border-color:var(--amber);background:var(--amber-soft)}
+.callout.good{border-color:var(--green);background:var(--green-soft)}
+.callout.bad{border-color:var(--red);background:var(--red-soft)}
+.callout b.title{display:block;margin-bottom:2px}
+.term{font-weight:700}
+code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.9em;background:var(--code-bg);border:1px solid var(--line);padding:0 5px;border-radius:5px}
+pre.code{background:var(--code-bg);border:1px solid var(--line);border-radius:12px;padding:12px 0;margin:0;overflow:auto;font:14px/1.65 "SF Mono",Menlo,Consolas,monospace}
+pre.code .ln{display:block;padding-right:14px;white-space:pre;border-left:4px solid transparent;transition:background .15s}
+pre.code .ln i{display:inline-block;width:30px;text-align:right;margin-right:14px;color:var(--sub);font-style:normal;opacity:.7;user-select:none}
+pre.code .ln.hl{background:var(--mark);border-left-color:var(--amber)}
+pre.code .ln.hl.bad{background:var(--red-soft);border-left-color:var(--red)}
+pre.code .k{color:var(--kw)}
+pre.code .n{color:var(--nm)}
+pre.snip{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;font:14px/1.6 "SF Mono",Menlo,Consolas,monospace;overflow:auto}
+.tree{width:100%;height:auto;display:block;max-width:600px;margin:0 auto}
+.edge{stroke:var(--line);stroke-width:3}
+.edge.on{stroke:var(--green);stroke-width:5}
+.tnode circle{fill:var(--card);stroke:var(--sub);stroke-width:2;transition:fill .2s,stroke .2s}
+.tnode .num{font:700 17px -apple-system,sans-serif;fill:var(--ink);text-anchor:middle}
+.tnode .emo{font-size:16px;text-anchor:middle}
+.tnode{transition:opacity .2s}
+.tnode.locked{opacity:.42}
+.tnode.cand circle{fill:var(--blue-soft);stroke:var(--blue);stroke-width:3;stroke-dasharray:6 4}
+.tnode.visited circle{fill:var(--green);stroke:var(--green)}
+.tnode.visited .num{fill:var(--on-green)}
+.tnode.focus circle{stroke:var(--amber);stroke-width:6;stroke-dasharray:none}
+.tnode.reject{opacity:1}
+.tnode.reject circle{fill:var(--red-soft);stroke:var(--red);stroke-width:6;stroke-dasharray:none}
+.tree.clickable .tnode{cursor:pointer}
+.tree.clickable .tnode.cand:hover circle{fill:var(--blue)}
+.tree.clickable .tnode.cand:hover .num{fill:#fff}
+.tnode.shake .inner{animation:shake .45s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--sub);margin:10px 0 4px;justify-content:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:16px;height:16px;border-radius:50%;display:inline-block;border:2px solid var(--sub);background:var(--card)}
+.dot.v{background:var(--green);border-color:var(--green)}
+.dot.c{background:var(--blue-soft);border:2px dashed var(--blue)}
+.dot.f{border:4px solid var(--amber)}
+.dot.r{background:var(--red-soft);border:4px solid var(--red)}
+.dot.l{opacity:.45}
+button{font:inherit;font-size:15px;padding:7px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--sub)}
+button.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button.primary code{background:transparent;border-color:transparent;color:inherit}
+button:disabled{opacity:.4;cursor:default}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;align-items:center}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 12px}
+.stat{padding:6px 14px;border-radius:10px;background:var(--code-bg);border:1px solid var(--line)}
+.stat b{font-size:21px;margin-left:6px;font-variant-numeric:tabular-nums}
+.row{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.row .lbl{flex:none;width:76px;color:var(--sub);font-size:14px;padding-top:4px}
+.chips{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:3px;padding:2px 10px;border-radius:999px;border:1.5px dashed var(--blue);background:var(--blue-soft);color:var(--ink);font-weight:650;font-size:15px;font-variant-numeric:tabular-nums;line-height:1.6}
+button.chip{cursor:pointer}
+.chip.sm{font-size:13.5px;padding:0 8px}
+.chip.blocked{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.chip.past{opacity:.35;border-style:solid}
+.chip.cur{background:var(--amber);border:1.5px solid var(--amber);color:#fff}
+.chip.paused{border:1.5px solid var(--sub);background:var(--code-bg)}
+.chip.rej{background:var(--red-soft);border:1.5px solid var(--red);color:var(--red);text-decoration:line-through}
+.chip.picked{background:var(--amber-soft);border:1.5px solid var(--amber);text-decoration:line-through}
+.chip.green{background:var(--green-soft);border:1.5px solid var(--green)}
+.chip.keep{border-style:solid}
+.path{font-weight:650;font-variant-numeric:tabular-nums}
+.msg{padding:12px 16px;border-radius:12px;background:var(--code-bg);border:1.5px solid var(--line);min-height:56px;margin:12px 0}
+.msg.good{background:var(--green-soft);border-color:var(--green)}
+.msg.bad{background:var(--red-soft);border-color:var(--red)}
+.msg.back{background:var(--amber-soft);border-color:var(--amber)}
+.msg.info{background:var(--blue-soft);border-color:var(--blue)}
+.msg .sub{display:block;font-size:14px;color:var(--sub);margin-top:4px}
+.cards{display:flex;flex-direction:column;gap:8px}
+.card{display:block;text-align:left;width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);line-height:1.6}
+.card.on{border-color:var(--amber);background:var(--amber-soft)}
+.card .tag{display:inline-block;font-size:12.5px;font-weight:700;padding:0 8px;border-radius:999px;background:var(--ink);color:var(--bg);margin-right:8px;vertical-align:1px}
+.card .body{display:block;color:var(--sub);font-size:14.5px;margin-top:3px}
+.rest-box{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--code-bg);margin-top:12px}
+.rest-line{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px}
+.rest-line .op{color:var(--sub);font-weight:700}
+.sim-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:start}
+#sim-code pre.code{font-size:13px}
+@media (max-width:880px){.sim-top{grid-template-columns:1fr}.sim-top>*{min-width:0}}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.controls input[type=range]{flex:1;min-width:160px;accent-color:var(--amber)}
+.count{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px;min-width:84px;text-align:right}
+.stack{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.frame{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);opacity:.72}
+.frame.top{opacity:1;border:2px solid var(--amber);background:var(--amber-soft)}
+.frame .f-depth{flex:none;width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;font-size:13px;font-weight:700;background:var(--code-bg);border:1px solid var(--line)}
+.frame .f-call{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;font-weight:600}
+.frame .f-path{margin-left:auto;font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums}
+.dtree-box{max-height:540px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--code-bg);font-size:14.5px;line-height:1.85}
+.dtree,.dtree ul{list-style:none;margin:0;padding-left:20px}
+.dtree{padding-left:0}
+.dtree ul{border-left:1.5px dashed var(--line);margin-left:6px}
+.dtree summary{cursor:pointer;font-variant-numeric:tabular-nums}
+.dtree li.rej{color:var(--red);opacity:.85}
+.dtree .leaf{padding-left:18px;display:inline-block}
+.dtree li.ans>details>summary,.dtree li.ans>.leaf{color:var(--amber);font-weight:750}
+.stage{display:flex;gap:14px;align-items:center;flex-wrap:wrap;min-height:110px;margin:12px 0}
+.box{border:2px solid var(--line);border-radius:12px;padding:10px 14px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;line-height:1.6;background:var(--card)}
+.box b{font-family:-apple-system,sans-serif}
+.box.active{border-color:var(--amber);background:var(--amber-soft)}
+.box.same{border-color:var(--green);background:var(--green-soft)}
+.box.dim{opacity:.45}
+.box.new{border-style:dashed;border-color:var(--blue);background:var(--blue-soft)}
+.arrow{font-size:22px;color:var(--sub)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+@media (max-width:760px){.cmp{grid-template-columns:1fr}}
+.cmp>div{border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.cmp h4{margin:0 0 6px;font-size:16px}
+.orders{columns:2;column-gap:24px;font-variant-numeric:tabular-nums;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;padding-left:20px;margin:8px 0}
+@media (max-width:760px){.orders{columns:1}}
+.nums{list-style:none;padding:0;margin:10px 0}
+.nums li{display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.nums li .l{width:170px;color:var(--sub);flex:none}
+.nums li .v{font-weight:700}
+details.q{border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:8px 0}
+details.q summary{font-weight:650;cursor:pointer}
+details.q[open]{background:var(--code-bg)}
+details.q p{margin:8px 0 2px}
+.gloss{list-style:none;padding:0;margin:0}
+.gloss li{padding:7px 0;border-bottom:1px solid var(--line)}
+.final{font-size:19px;font-weight:700;border-left:5px solid var(--ink);padding:6px 16px;margin:6px 0 14px}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>양과 늑대 · 4번 풀이 완전 이해</h1>
+  <p class="lead">후보 리스트 백트래킹. 위에서부터 순서대로 읽고, 버튼을 직접 눌러 보세요.</p>
+  <nav class="toc">
+    <a href="#s1">1 문제</a><a href="#s2">2 직접 해보기</a><a href="#s3">3 코드 한 줄씩</a><a href="#s4">4 컴퓨터의 백트래킹</a><a href="#s5">5 선택 트리</a><a href="#s6">6 되돌리기는 어디에</a><a href="#s7">7 약점</a><a href="#s8">8 확인 퀴즈</a><a href="#s9">9 정리·용어</a>
+  </nav>
+</header>
+
+<section id="s1">
+  <h2><span class="no">1</span>문제를 30초 만에</h2>
+  <div class="grid2">
+    <div>
+      <div id="intro-tree"></div>
+      <p class="muted small" style="text-align:center">입출력 예 #1. 맨 위 0번이 출발점(루트)이다.</p>
+    </div>
+    <div>
+      <ul class="plain">
+        <li>노드마다 양 🐑 또는 늑대 🐺가 한 마리 있다.</li>
+        <li>노드에 가면 그 동물이 나를 따라온다.</li>
+        <li>늑대 수가 양 수와 <b>같거나 많아지는 순간</b> 양을 다 잃는다.</li>
+        <li>목표: 양을 최대한 많이 모으기. 이 예제의 답은 <b>5</b>.</li>
+      </ul>
+      <div class="callout key">
+        <b class="title">가장 중요한 규칙</b>
+        이미 간 노드는 다시 지나가도 아무 일 없다. 동물이 또 따라오지 않는다.
+        이 한 줄 덕분에 4번 풀이가 성립한다. 2번에서 직접 느껴 보자.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">2</span>직접 해보기 — 손으로 하는 백트래킹</h2>
+  <p class="lead">파란 점선 동그라미(후보)를 눌러 이동하세요. 목표는 양 5마리입니다.</p>
+  <div class="grid2">
+    <div>
+      <div id="game-tree"></div>
+      <div class="legend">
+        <span><i class="dot v"></i>이미 간 곳</span>
+        <span><i class="dot c"></i>후보(지금 갈 수 있는 곳)</span>
+        <span><i class="dot l"></i>아직 못 가는 곳</span>
+      </div>
+    </div>
+    <div>
+      <div class="stats">
+        <span class="stat">🐑 양<b id="g-s">1</b></span>
+        <span class="stat">🐺 늑대<b id="g-w">0</b></span>
+        <span class="stat">⭐ 최고 기록<b id="g-b">1</b></span>
+      </div>
+      <div class="row"><span class="lbl">후보</span><div id="g-cand" class="chips"></div></div>
+      <div class="row"><span class="lbl">지나온 길</span><div id="g-path" class="path"></div></div>
+      <div id="g-msg" class="msg"></div>
+      <div class="btns">
+        <button id="g-undo" class="primary">↩ 되돌리기</button>
+        <button id="g-reset">처음부터</button>
+        <button id="g-hint">힌트</button>
+      </div>
+      <p id="g-hint-text" class="callout small" hidden>늑대 8번을 일찍 데려가면, 그 아래 양 7번·9번을 얻는다. 양이 늘면 늑대를 더 감당할 수 있다. 빨간 칩은 "지금 가면 양을 잃는 늑대"다.</p>
+    </div>
+  </div>
+
+  <div class="callout good">
+    <b class="title">방금 한 것이 백트래킹(backtracking)이다</b>
+    백트래킹 — 갈림길마다 하나를 골라 끝까지 가보고, 막히면 직전 갈림길로 돌아와 다른 길을 고르는 탐색.
+    <ol style="margin:6px 0 0;padding-left:22px">
+      <li><b>고르기</b>: 후보 하나를 누른다.</li>
+      <li><b>들어가기</b>: 그 상태에서 계속 진행한다.</li>
+      <li><b>되돌리기</b>: 막히면 ↩ 로 직전 상태에 돌아가 다른 후보를 고른다.</li>
+    </ol>
+  </div>
+
+  <div class="callout key">
+    <b class="title">왜 "후보 목록"만 들고 다니면 되나?</b>
+    <ul class="plain" style="margin:4px 0 0">
+      <li>이미 간 곳은 공짜로 오갈 수 있다.</li>
+      <li>그러니 "지금 어디 서 있나"는 중요하지 않다.</li>
+      <li>중요한 건 "어디어디를 갔나"(방문한 노드 집합)뿐이다.</li>
+      <li>다음에 갈 수 있는 곳 = 이미 간 노드의 <b>아직 안 간 자식</b>. 이게 후보다.</li>
+      <li>이 후보를 <span class="term">프런티어(frontier)</span>라고도 부른다. 프런티어 — 이미 간 영역과 맞닿은 바로 다음 칸들.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">3</span>코드 한 줄씩</h2>
+  <p class="lead">오른쪽 설명을 누르면 해당 줄이 노랗게 칠해집니다.</p>
+  <div class="grid-code">
+    <div class="sticky"><div id="code-read"></div></div>
+    <div class="cards" id="code-cards"></div>
+  </div>
+
+  <h3>12줄 <code>rest</code> 계산기</h3>
+  <p class="muted small">가장 헷갈리는 줄이다. 아래 경우를 하나씩 눌러 보자.</p>
+  <div class="btns" id="rest-btns"></div>
+  <div class="rest-box" id="rest-out"></div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">4</span>컴퓨터가 하는 백트래킹, 한 단계씩</h2>
+  <p class="lead">2번에서 손으로 한 일을 컴퓨터는 모든 후보에 대해 빠짐없이 합니다. "다음 →" 또는 키보드 → 를 누르세요.</p>
+  <div class="sim-top">
+    <div>
+      <div id="sim-tree"></div>
+      <div class="legend">
+        <span><i class="dot v"></i>지나온 길</span>
+        <span><i class="dot c"></i>후보</span>
+        <span><i class="dot f"></i>지금 고르는 노드</span>
+        <span><i class="dot r"></i>버린 늑대</span>
+      </div>
+      <div class="stats" style="justify-content:center">
+        <span class="stat">🐑 sheep<b id="s-s">1</b></span>
+        <span class="stat">🐺 wolf<b id="s-w">0</b></span>
+        <span class="stat">⭐ answer<b id="s-a">0</b></span>
+      </div>
+    </div>
+    <div id="sim-code"></div>
+  </div>
+  <div id="s-msg" class="msg"></div>
+  <div class="controls">
+    <button id="s-first">⏮ 처음</button>
+    <button id="s-prev">← 이전</button>
+    <button id="s-next" class="primary">다음 →</button>
+    <button id="s-play">⏵ 자동 재생</button>
+    <select id="s-speed" aria-label="재생 속도">
+      <option value="1300">느리게</option>
+      <option value="650" selected>보통</option>
+      <option value="220">빠르게</option>
+      <option value="50">아주 빠르게</option>
+    </select>
+  </div>
+  <div class="controls">
+    <button id="s-back">↩ 다음 "돌아옴"으로</button>
+    <button id="s-star">⭐ 양 5가 처음 나오는 곳으로</button>
+    <input type="range" id="s-range" min="0" value="0" aria-label="단계">
+    <span class="count" id="s-count"></span>
+  </div>
+  <h3>콜 스택(call stack)</h3>
+  <p class="muted small">콜 스택 — 아직 안 끝난 함수 호출이 접시처럼 쌓인 것. 맨 위(주황)가 지금 실행 중인 칸이다. 아래 칸들은 위 칸이 끝나길 기다린다. 칩 색: 주황 = 지금 보는 후보, 흐림 = 이미 본 후보, 회색 테두리 = 아래 칸이 들어가 있는 후보.</p>
+  <div class="stack" id="s-stack"></div>
+</section>
+
+<section id="s5">
+  <h2><span class="no">5</span>선택 트리 — 컴퓨터가 걸어간 길 전체</h2>
+  <p class="lead"><span class="term">선택 트리(decision tree)</span> — 갈림길을 나무 모양으로 펼친 것. 양·늑대 그림(입력 트리)과는 다른 나무다.</p>
+  <ul class="plain">
+    <li>선택 트리의 한 줄 = dfs 호출 한 번 = 4번 시뮬레이터의 한 칸.</li>
+    <li>▸ 를 누르면 그 칸에서 고를 수 있는 후보들이 펼쳐진다.</li>
+    <li>빨간 줄은 가지치기로 버린 갈래다. 그 아래로는 들어가지 않는다.</li>
+  </ul>
+  <p id="dt-stat" class="muted"></p>
+  <div class="btns">
+    <button id="dt-ans" class="primary">⭐ 정답 경로만 펼치기</button>
+    <button id="dt-one">첫 갈림길만</button>
+    <button id="dt-all">모두 펼치기</button>
+    <button id="dt-none">모두 접기</button>
+  </div>
+  <div class="dtree-box"><ul class="dtree" id="dtree"></ul></div>
+  <div class="callout">
+    정답 순서 0→1→8→7→9→4→6→5 도 이 나무의 한 경로다. 컴퓨터는 이 경로를 "알고" 가는 게 아니다. 모든 경로를 다 걸어 보다가 이 경로에서 양 5를 만날 뿐이다.
+  </div>
+</section>
+
+<section id="s6">
+  <h2><span class="no">6</span>"되돌리기"는 어디 있나?</h2>
+  <p class="lead">코드에 되돌리는 줄이 없습니다. 그런데도 돌아오면 원래 상태입니다. 아래 4단계를 넘겨 보세요.</p>
+  <div class="stage" id="st-view"></div>
+  <div id="st-msg" class="msg"></div>
+  <div class="btns">
+    <button id="st-prev">← 이전</button>
+    <button id="st-next" class="primary">다음 →</button>
+    <span class="count" id="st-count"></span>
+  </div>
+
+  <div class="cmp">
+    <div>
+      <h4>4번 방식: 새 값을 만들어 넘기기</h4>
+      <pre class="snip">dfs(sheep + 1, wolf, rest)</pre>
+      <ul class="plain small">
+        <li>비유: 복사본에 적어서 넘긴다. 원본은 깨끗하다.</li>
+        <li>얻는 것: 되돌리는 줄이 없어서 빼먹을 일도 없다.</li>
+        <li>내는 것: 호출마다 후보 리스트를 새로 복사한다.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>흔한 방식: 고쳤다가 되돌리기</h4>
+      <pre class="snip">visited[x] = True
+dfs(...)
+visited[x] = False</pre>
+      <ul class="plain small">
+        <li>비유: 원본에 연필로 쓰고, 돌아오면 지운다.</li>
+        <li>얻는 것: 복사가 없다.</li>
+        <li>내는 것: 지우는 줄을 빼먹으면 버그가 난다.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted small" style="margin-top:12px"><code>answer</code>는 모든 칸이 같이 쓰는 변수다. 그래도 되돌리지 않는다. "지금까지 본 최댓값" 기록이라 되돌릴 이유가 없다.</p>
+</section>
+
+<section id="s7">
+  <h2><span class="no">7</span>약점 — 같은 방에 다른 문으로 여러 번 들어온다</h2>
+  <div class="grid2">
+    <div>
+      <div id="dup-tree"></div>
+      <p class="muted small" style="text-align:center">초록 = 아래 순서들이 모두 도착하는 같은 방문 집합</p>
+    </div>
+    <div>
+      <p id="dup-text"></p>
+      <ol class="orders" id="dup-list"></ol>
+      <p>방문 집합이 같으면 양 수, 늑대 수, 후보가 모두 같다. 그 뒤에 벌어질 일도 똑같다. 그런데 4번은 도착할 때마다 그 뒤를 처음부터 다시 탐색한다.</p>
+    </div>
+  </div>
+  <div class="callout bad" id="dup-total"></div>
+
+  <h3>노드가 늘면 폭발한다 (측정값)</h3>
+  <p class="muted small">전부 양인 트리로 쟀다. 늑대가 없으면 가지치기가 한 번도 안 걸려서 모든 순서를 다 본다. 그래서 이게 최악이다.</p>
+  <ul class="nums">
+    <li><span class="l">양 10개</span><span class="v">dfs 호출 9,446번</span></li>
+    <li><span class="l">양 11개</span><span class="v">52,861번</span></li>
+    <li><span class="l">양 12개</span><span class="v">220,944번</span></li>
+    <li><span class="l">양 13개</span><span class="v">1,390,647번</span><span class="muted small">노드 하나마다 약 5배</span></li>
+    <li><span class="l">양 17개 (최대 입력)</span><span class="v">15초가 지나도 안 끝남</span><span class="muted small">제한 시간 10초</span></li>
+    <li><span class="l">같은 입력, 1~3번 풀이</span><span class="v">0.003초</span></li>
+  </ul>
+  <p class="muted small">프로그래머스 실제 채점에서 4번이 통과하는지는 확인하지 않았다.</p>
+
+  <h3>고치는 법: 메모이제이션(memoization)</h3>
+  <p><span class="term">메모이제이션(memoization)</span> — 이미 본 상태를 적어 두고 다시 계산하지 않는 것. 1번 풀이가 이렇게 한다.</p>
+  <pre class="snip">def dfs(mask, sheep, wolf):
+    nonlocal answer
+    if mask in seen:
+        return
+    seen.add(mask)</pre>
+  <ul class="plain">
+    <li><span class="term">비트마스크(bitmask)</span> — 집합을 0/1 비트로 숫자 하나에 담는 것. 예: {0, 1, 8} → 2⁰ + 2¹ + 2⁸ = 259.</li>
+    <li>이미 본 집합이면 바로 돌아간다. 그래서 집합 하나당 딱 한 번만 탐색한다.</li>
+    <li>집합은 많아야 2¹⁷ = 131,072개다. 순서는 양 17개 트리에서 끝까지 가는 것만 약 8억 2천만 가지다.</li>
+  </ul>
+  <p class="final">결국 4번의 병목은 메모이제이션 부재로 인한 중복 상태 탐색이다.</p>
+  <p class="muted small"><span class="term">상태 공간(state space)</span> — 나올 수 있는 상태 전체. 4번은 상태 공간이 집합 수(2ⁿ)가 아니라 순서 수(순열)만큼 커진다. 느린 이유는 리스트 복사가 아니라 이 호출 횟수다.</p>
+</section>
+
+<section id="s8">
+  <h2><span class="no">8</span>확인 퀴즈</h2>
+  <p class="lead">먼저 답을 말해 보고 펼치세요.</p>
+  <details class="q"><summary>Q1. 시작할 때 8번(늑대)을 바로 못 고르는 이유는?</summary>
+    <p>양 1, 늑대 0이다. 8번을 고르면 늑대가 1이 된다. 검사 <code>sheep &gt; wolf + 1</code> → 1 &gt; 1 이 거짓이라 버린다.</p></details>
+  <details class="q"><summary>Q2. dfs(양 2, 늑대 0, 후보 [8, 2, 4])에서 8을 고르면 rest는?</summary>
+    <p>앞 [] + 뒤 [2, 4] + 8의 자식 [7, 9] = <b>[2, 4, 7, 9]</b>. 다음 호출은 dfs(양 2, 늑대 1, [2, 4, 7, 9]).</p></details>
+  <details class="q"><summary>Q3. dfs(양 2, 늑대 1, 후보 [2, 4, 7, 9])에서 2를 고르면?</summary>
+    <p>2는 늑대. 2 &gt; 1 + 1 → 2 &gt; 2 가 거짓. 이 갈래는 버린다.</p></details>
+  <details class="q"><summary>Q4. Q3에서 버린 2번은 영영 못 가나?</summary>
+    <p>아니다. 버린 건 "지금 이 갈래"뿐이다. 2번은 후보 목록에 그대로 남는다. 7번을 고른 다음 칸(양 3, 늑대 1, 후보 [2, 4, 9])에서는 3 &gt; 2 라서 갈 수 있다.</p></details>
+  <details class="q"><summary>Q5. 7번 갈래에서 돌아오면, 그 칸의 candidates는?</summary>
+    <p>[2, 4, 7, 9] 그대로다. 7번 갈래에 넘긴 건 새로 만든 리스트 rest였다. 원래 리스트는 아무도 안 건드렸다.</p></details>
+  <details class="q"><summary>Q6. 이 코드가 느린 진짜 이유는?</summary>
+    <p>같은 방문 집합을 순서만 바꿔 여러 번 다시 탐색한다(메모이제이션 없음). 리스트 복사 때문이 아니다.</p></details>
+</section>
+
+<section id="s9">
+  <h2><span class="no">9</span>정리와 용어</h2>
+  <p class="final">백트래킹 = 선택 트리 위의 DFS + 가지치기.</p>
+  <ul class="plain">
+    <li>후보(프런티어) 목록만 들고 다니면 된다. 이미 간 곳은 공짜로 지나가니까.</li>
+    <li>상태를 새 값으로 넘긴다. 그래서 되돌리기가 자동이다.</li>
+    <li>메모이제이션이 없다. 그래서 같은 집합을 순서만 바꿔 여러 번 탐색한다.</li>
+  </ul>
+  <h3>용어 사전</h3>
+  <ul class="gloss">
+    <li><span class="term">백트래킹(backtracking)</span> — 하나 골라 끝까지 가보고, 막히면 직전 갈림길로 돌아와 다른 걸 고르는 탐색.</li>
+    <li><span class="term">재귀(recursion)</span> — 함수가 자기 자신을 다시 부르는 것.</li>
+    <li><span class="term">DFS(깊이 우선 탐색)</span> — 한 길을 끝까지 먼저 파고드는 탐색.</li>
+    <li><span class="term">선택 트리(decision tree)</span> — 갈림길을 나무 모양으로 펼친 것.</li>
+    <li><span class="term">콜 스택(call stack)</span> — 아직 안 끝난 함수 호출이 접시처럼 쌓인 것.</li>
+    <li><span class="term">가지치기(pruning)</span> — 들어가 봐야 소용없는 갈래를 미리 버리는 것. 이 코드의 <code>sheep &gt; wolf + 1</code>은 엄밀히는 <span class="term">제약 검사(feasibility check)</span>다. 제약 검사 — 규칙상 갈 수 없는 길을 막는 것.</li>
+    <li><span class="term">프런티어(frontier)</span> — 이미 간 영역과 맞닿은 바로 다음 칸들. 이 코드의 candidates.</li>
+    <li><span class="term">상태(state)</span> — 지금 상황을 다 설명하는 값 묶음. 여기선 (양, 늑대, 후보).</li>
+    <li><span class="term">상태 공간(state space)</span> — 나올 수 있는 상태 전체.</li>
+    <li><span class="term">메모이제이션(memoization)</span> — 이미 본 상태를 적어 두고 다시 계산하지 않는 것.</li>
+    <li><span class="term">비트마스크(bitmask)</span> — 집합을 0/1 비트로 숫자 하나에 담는 것.</li>
+  </ul>
+  <p class="muted small" id="foot"></p>
+</section>
+
+</main>
+
+<script id="logic">
+const INFO = [0,0,1,1,1,0,1,0,1,0,1,1];
+const EDGES = [[0,1],[1,2],[1,4],[0,8],[8,7],[9,10],[9,11],[4,3],[6,5],[4,6],[8,9]];
+const N = INFO.length;
+const CH = Array.from({ length: N }, () => []);
+const PARENT = Array(N).fill(-1);
+for (const [p, c] of EDGES) { CH[p].push(c); PARENT[c] = p; }
+const ANSWER_PATH = [0,1,8,7,9,4,6,5];
+const isSheep = v => INFO[v] === 0;
+const emo = v => isSheep(v) ? '🐑' : '🐺';
+const fmt = a => '[' + a.join(', ') + ']';
+const makeRest = (cand, i) => cand.slice(0, i).concat(cand.slice(i + 1), CH[cand[i]]);
+
+function layout() {
+  const X = [], Y = [];
+  let leaf = 0;
+  (function place(v, d) {
+    Y[v] = d;
+    if (!CH[v].length) { X[v] = leaf++; return; }
+    CH[v].forEach(c => place(c, d + 1));
+    X[v] = (X[CH[v][0]] + X[CH[v][CH[v].length - 1]]) / 2;
+  })(0, 0);
+  return { X, Y, cols: leaf, rows: Math.max(...Y) + 1 };
+}
+
+function buildTrace() {
+  const steps = [];
+  const stack = [];
+  let answer = 0;
+  const snap = o => steps.push(Object.assign({}, o, {
+    answer,
+    stack: stack.map(f => ({ sheep: f.sheep, wolf: f.wolf, cand: f.cand.slice(), path: f.path.slice(), i: f.i }))
+  }));
+  function dfs(sheep, wolf, cand, path) {
+    const f = { sheep, wolf, cand, path, i: -1 };
+    stack.push(f);
+    const before = answer;
+    answer = Math.max(answer, sheep);
+    snap({ kind: 'call', lines: [8, 9, 10], before });
+    for (let i = 0; i < cand.length; i++) {
+      const node = cand[i];
+      f.i = i;
+      const rest = makeRest(cand, i);
+      if (isSheep(node)) {
+        snap({ kind: 'sheep', lines: [11, 12, 13, 14], node, rest });
+        dfs(sheep + 1, wolf, rest, path.concat(node));
+        snap({ kind: 'back', lines: [14], node });
+      } else if (sheep > wolf + 1) {
+        snap({ kind: 'wolf', lines: [11, 12, 15, 16], node, rest });
+        dfs(sheep, wolf + 1, rest, path.concat(node));
+        snap({ kind: 'back', lines: [16], node });
+      } else {
+        snap({ kind: 'reject', lines: [11, 12, 15], node, rest });
+      }
+    }
+    f.i = cand.length;
+    snap({ kind: 'done', lines: [11] });
+    stack.pop();
+  }
+  snap({ kind: 'start', lines: [18] });
+  dfs(1, 0, CH[0].slice(), [0]);
+  snap({ kind: 'end', lines: [19] });
+  return steps;
+}
+
+function buildDecision() {
+  let calls = 0, rejects = 0;
+  const seen = new Map();
+  function dfs(sheep, wolf, cand, path) {
+    calls++;
+    const key = path.slice().sort((a, b) => a - b).join(',');
+    if (!seen.has(key)) seen.set(key, []);
+    seen.get(key).push(path);
+    const kids = cand.map((v, i) => {
+      const rest = makeRest(cand, i);
+      if (isSheep(v)) return { pick: v, ok: true, call: dfs(sheep + 1, wolf, rest, path.concat(v)) };
+      if (sheep > wolf + 1) return { pick: v, ok: true, call: dfs(sheep, wolf + 1, rest, path.concat(v)) };
+      rejects++;
+      return { pick: v, ok: false };
+    });
+    return { sheep, wolf, cand, path, kids };
+  }
+  const root = dfs(1, 0, CH[0].slice(), [0]);
+  let dup = null;
+  for (const [key, paths] of seen) {
+    if (!dup || paths.length > dup.paths.length) dup = { set: key.split(',').map(Number), paths };
+  }
+  return { root, calls, rejects, distinct: seen.size, dup };
+}
+</script>
+
+<script>
+const $ = s => document.querySelector(s);
+const L = layout();
+const PX = v => 50 + L.X[v] * 96;
+const PY = v => 44 + L.Y[v] * 84;
+
+function makeTree(host, onPick) {
+  const W = 100 + (L.cols - 1) * 96, H = 88 + (L.rows - 1) * 84;
+  let s = `<svg viewBox="0 0 ${W} ${H}" class="tree${onPick ? ' clickable' : ''}" role="img" aria-label="입력 트리">`;
+  for (const [p, c] of EDGES) s += `<line class="edge" data-e="${c}" x1="${PX(p)}" y1="${PY(p)}" x2="${PX(c)}" y2="${PY(c)}"></line>`;
+  for (let v = 0; v < N; v++) {
+    s += `<g class="tnode" data-v="${v}" transform="translate(${PX(v)},${PY(v)})"><title>${v}번 ${isSheep(v) ? '양' : '늑대'}</title><g class="inner"><circle r="23"></circle><text class="num" dy="0.36em">${v}</text><text class="emo" x="19" y="-15">${emo(v)}</text></g></g>`;
+  }
+  host.innerHTML = s + '</svg>';
+  const nodes = [...host.querySelectorAll('.tnode')];
+  const edges = [...host.querySelectorAll('.edge')];
+  if (onPick) nodes.forEach(g => g.addEventListener('click', () => onPick(+g.dataset.v)));
+  return {
+    set({ visited = [], cand = [], focus = -1, reject = -1, dim = true }) {
+      const V = new Set(visited), C = new Set(cand);
+      nodes.forEach((g, v) => {
+        let c = 'tnode';
+        if (V.has(v)) c += ' visited';
+        else if (C.has(v)) c += ' cand';
+        else if (dim) c += ' locked';
+        if (v === focus) c += ' focus';
+        if (v === reject) c += ' reject';
+        g.setAttribute('class', c);
+      });
+      edges.forEach(e => {
+        const c = +e.dataset.e;
+        e.setAttribute('class', 'edge' + (V.has(c) && V.has(PARENT[c]) ? ' on' : ''));
+      });
+    },
+    shake(v) {
+      const g = nodes[v];
+      g.classList.remove('shake');
+      g.getBoundingClientRect();
+      g.classList.add('shake');
+    }
+  };
+}
+
+const CODE = `def solution(info, edges):
+    children = [[] for _ in range(len(info))]
+    for p, c in edges:
+        children[p].append(c)
+
+    answer = 0
+
+    def dfs(sheep, wolf, candidates):
+        nonlocal answer
+        answer = max(answer, sheep)
+        for i, node in enumerate(candidates):
+            rest = candidates[:i] + candidates[i + 1:] + children[node]
+            if info[node] == 0:
+                dfs(sheep + 1, wolf, rest)
+            elif sheep > wolf + 1:
+                dfs(sheep, wolf + 1, rest)
+
+    dfs(1, 0, children[0])
+    return answer`;
+
+function renderCode(host) {
+  const color = t => t
+    .replace(/\b(def|for|in|if|elif|return|nonlocal)\b/g, '<span class="k">$1</span>')
+    .replace(/\b(\d+)\b/g, '<span class="n">$1</span>');
+  host.innerHTML = '<pre class="code">' + CODE.split('\n').map((t, k) => `<span class="ln" data-l="${k + 1}"><i>${k + 1}</i>${color(t) || ' '}</span>`).join('') + '</pre>';
+  const lines = [...host.querySelectorAll('.ln')];
+  return {
+    hl(ls, tone) {
+      const S = new Set(ls);
+      lines.forEach((el, k) => el.className = 'ln' + (S.has(k + 1) ? ' hl' + (tone ? ' ' + tone : '') : ''));
+    }
+  };
+}
+
+const introTree = makeTree($('#intro-tree'));
+introTree.set({ dim: false });
+
+const game = { hist: [], sheep: 1, wolf: 0, cand: CH[0].slice(), path: [0], best: 1 };
+const gTree = makeTree($('#game-tree'), gamePick);
+const canGo = v => isSheep(v) || game.sheep > game.wolf + 1;
+
+function gameRender(msg, tone) {
+  gTree.set({ visited: game.path, cand: game.cand });
+  $('#g-s').textContent = game.sheep;
+  $('#g-w').textContent = game.wolf;
+  $('#g-b').textContent = game.best;
+  $('#g-cand').innerHTML = game.cand.length
+    ? game.cand.map(v => `<button class="chip${canGo(v) ? '' : ' blocked'}" data-v="${v}" title="${canGo(v) ? '갈 수 있음' : '지금 가면 양을 잃음'}">${v} ${emo(v)}</button>`).join('')
+    : '<span class="muted">없음</span>';
+  $('#g-cand').querySelectorAll('button').forEach(b => b.addEventListener('click', () => gamePick(+b.dataset.v)));
+  $('#g-path').textContent = game.path.join(' → ');
+  $('#g-undo').disabled = !game.hist.length;
+  const m = $('#g-msg');
+  m.innerHTML = msg;
+  m.className = 'msg ' + (tone || 'info');
+}
+
+function gamePick(v) {
+  if (game.path.includes(v)) return gameRender(`${v}번은 이미 갔다. 다시 지나가도 아무 일 없다.`, 'info');
+  if (!game.cand.includes(v)) return gameRender(`${v}번은 아직 후보가 아니다. 부모인 ${PARENT[v]}번을 먼저 가야 한다.`, 'info');
+  if (!canGo(v)) {
+    gTree.shake(v);
+    return gameRender(`${v}번은 늑대다. 가면 양 ${game.sheep}, 늑대 ${game.wolf + 1}. 양이 더 많지 않으니 양을 다 잃는다 → <b>못 간다</b>.<span class="sub">코드의 <code>sheep &gt; wolf + 1</code> → ${game.sheep} &gt; ${game.wolf + 1} 이 거짓이라 걸린다. 이게 가지치기다.</span>`, 'bad');
+  }
+  game.hist.push({ sheep: game.sheep, wolf: game.wolf, cand: game.cand.slice(), path: game.path.slice() });
+  const i = game.cand.indexOf(v);
+  game.cand = makeRest(game.cand, i);
+  game.path.push(v);
+  if (isSheep(v)) game.sheep++; else game.wolf++;
+  game.best = Math.max(game.best, game.sheep);
+  let msg = `${v}번 ${emo(v)} 고름. 후보에서 ${v}를 빼고, ${v}의 자식 ${fmt(CH[v])}${CH[v].length ? '을 넣었다' : '은 없어서 새로 들어온 후보는 없다'}.`;
+  let tone = 'good';
+  if (game.sheep === 5 && isSheep(v)) msg = `🎉 양 5마리! 이 예제의 최댓값이다. ` + msg;
+  if (!game.cand.some(canGo)) {
+    msg += `<span class="sub">더 고를 수 있는 후보가 없다. 막혔다. ↩ 되돌리기로 직전 갈림길에 돌아가 다른 걸 골라 보자.</span>`;
+    tone = game.sheep === 5 ? 'good' : 'back';
+  }
+  gameRender(msg, tone);
+}
+
+$('#g-undo').addEventListener('click', () => {
+  if (!game.hist.length) return;
+  const last = game.path[game.path.length - 1];
+  Object.assign(game, game.hist.pop());
+  gameRender(`↩ ${last}번을 고르기 전 상태로 돌아왔다. 이제 다른 후보를 골라 보자.`, 'back');
+});
+$('#g-reset').addEventListener('click', () => {
+  Object.assign(game, { hist: [], sheep: 1, wolf: 0, cand: CH[0].slice(), path: [0], best: 1 });
+  gameRender('처음 상태. 0번(양)에서 시작한다. 파란 점선이 지금 갈 수 있는 후보다.');
+});
+$('#g-hint').addEventListener('click', () => { $('#g-hint-text').hidden = !$('#g-hint-text').hidden; });
+gameRender('0번(양)에서 시작한다. 파란 점선이 지금 갈 수 있는 후보다. 빨간 칩은 지금 가면 양을 잃는 늑대다.');
+
+const CARDS = [
+  { lines: [2, 3, 4], tag: '준비', title: '자식 목록 만들기', body: 'children[p]에 p의 자식들을 모은다. 예: children[0] = [1, 8], children[8] = [7, 9].' },
+  { lines: [6, 9, 10], tag: '기록', title: '최고 기록 answer', body: 'dfs에 들어올 때마다 지금 양 수로 answer를 갱신한다. nonlocal — 바깥 함수의 변수 answer를 여기서 고치겠다는 선언.' },
+  { lines: [8], tag: '상태', title: 'dfs 한 번 = 지금 상황 하나', body: 'sheep(모은 양), wolf(따라온 늑대), candidates(다음에 갈 수 있는 노드). 이 셋이면 지금 상황이 다 설명된다.' },
+  { lines: [11], tag: '고르기', title: '후보를 하나씩 고른다', body: 'i는 목록 안의 위치, node는 노드 번호. 모든 후보를 차례로 한 번씩 골라 본다.' },
+  { lines: [12], tag: '후보 갱신', title: '다음 후보 목록 rest', body: '고른 것만 빼고(앞 조각 + 뒤 조각), 그 노드의 자식을 뒤에 붙인다. 아래 계산기로 확인하자.' },
+  { lines: [13, 14], tag: '들어가기', title: '양이면 그냥 들어간다', body: '양은 늘수록 안전하다. 검사 없이 sheep + 1로 들어간다.' },
+  { lines: [15, 16], tag: '가지치기', title: '늑대면 검사하고 들어간다', body: '늑대가 오면 늑대 수는 wolf + 1이 된다. 그래도 양이 더 많아야 한다: sheep > wolf + 1. 아니면 이 갈래는 들어가지 않고 버린다.' },
+  { lines: [], tag: '되돌리기', title: '되돌리는 줄은 없다', body: 'visited[x] = False 같은 줄이 없다. 그래도 문제없다. 이유는 6번에서 본다.' },
+  { lines: [18], tag: '시작', title: '루트에서 출발', body: '0번 양은 이미 데리고 있다(양 1, 늑대 0). 첫 후보는 0번의 자식 [1, 8].' },
+  { lines: [19], tag: '끝', title: '정답 반환', body: '모든 갈래를 다 본 뒤 answer를 돌려준다.' }
+];
+const readCode = renderCode($('#code-read'));
+$('#code-cards').innerHTML = CARDS.map((c, k) => `<button class="card" data-k="${k}"><span class="tag">${c.tag}</span><b>${c.lines.length ? c.lines.join('·') + '줄 — ' : ''}${c.title}</b><span class="body">${c.body}</span></button>`).join('');
+const cardEls = [...document.querySelectorAll('#code-cards .card')];
+function pickCard(k) {
+  cardEls.forEach((el, j) => el.classList.toggle('on', j === k));
+  readCode.hl(CARDS[k].lines);
+}
+cardEls.forEach((el, k) => el.addEventListener('click', () => pickCard(k)));
+pickCard(4);
+
+const REST_CASES = [
+  { cand: [1, 8], i: 0 },
+  { cand: [8, 2, 4], i: 0 },
+  { cand: [8, 2, 4], i: 1 },
+  { cand: [2, 4, 7, 9], i: 2 },
+  { cand: [2, 4, 7, 9], i: 3 }
+];
+const chip = (v, cls) => `<span class="chip sm keep${cls ? ' ' + cls : ''}">${v}${emo(v)}</span>`;
+const chipList = (a, cls) => a.length ? a.map(v => chip(v, cls)).join('') : '<span class="muted">[]</span>';
+function showRest(k) {
+  const { cand, i } = REST_CASES[k];
+  const node = cand[i];
+  const front = cand.slice(0, i), back = cand.slice(i + 1), kids = CH[node];
+  $('#rest-btns').querySelectorAll('button').forEach((b, j) => b.classList.toggle('primary', j === k));
+  $('#rest-out').innerHTML = `
+    <div class="rest-line"><span>candidates =</span>${cand.map((v, j) => chip(v, j === i ? 'picked' : '')).join('')}<span class="muted">← i = ${i}, node = ${node}</span></div>
+    <div class="rest-line"><span>candidates[:${i}]</span><span class="op">=</span>${chipList(front)}<span class="muted">고른 것 앞 조각</span></div>
+    <div class="rest-line"><span>candidates[${i + 1}:]</span><span class="op">=</span>${chipList(back)}<span class="muted">고른 것 뒤 조각</span></div>
+    <div class="rest-line"><span>children[${node}]</span><span class="op">=</span>${chipList(kids, 'green')}<span class="muted">${kids.length ? '새로 갈 수 있게 된 자식' : '자식 없음'}</span></div>
+    <div class="rest-line"><b>rest =</b>${front.concat(back).map(v => chip(v)).join('')}${kids.map(v => chip(v, 'green')).join('')}</div>
+    <p class="small muted" style="margin:6px 0 0">${node}번은 빠지고(이미 갔으니까), ${node}번의 자식이 새 후보로 들어온다. 원래 candidates는 그대로다.</p>`;
+}
+$('#rest-btns').innerHTML = REST_CASES.map(c => `<button><code>${fmt(c.cand)}</code>에서 ${c.cand[c.i]} 고르기</button>`).join('');
+$('#rest-btns').querySelectorAll('button').forEach((b, k) => b.addEventListener('click', () => showRest(k)));
+showRest(1);
+
+const TRACE = buildTrace();
+const sTree = makeTree($('#sim-tree'));
+const sCode = renderCode($('#sim-code'));
+let cur = 0, timer = null;
+
+function describe(st, top) {
+  const s = top && top.sheep, w = top && top.wolf;
+  switch (st.kind) {
+    case 'start':
+      return `시작. <code>dfs(1, 0, children[0])</code> = dfs(양 1, 늑대 0, 후보 [1, 8])을 부른다.`;
+    case 'call':
+      return `새 칸에 들어왔다: <b>dfs(양 ${s}, 늑대 ${w}, 후보 ${fmt(top.cand)})</b>. ` +
+        (st.answer > st.before ? `최고 기록 answer가 ${st.before} → <b>${st.answer}</b>로 올랐다.` : `answer는 ${st.answer} 그대로.`);
+    case 'sheep':
+    case 'wolf': {
+      const i = top.i;
+      const head = st.kind === 'sheep'
+        ? `${st.node}번 🐑을 고른다. 양이니 검사 없이 들어간다 → dfs(양 ${s + 1}, 늑대 ${w}, ${fmt(st.rest)})`
+        : `${st.node}번 🐺을 고른다. 검사 ${s} &gt; ${w} + 1 → ${s} &gt; ${w + 1} <b>OK</b>. 들어간다 → dfs(양 ${s}, 늑대 ${w + 1}, ${fmt(st.rest)})`;
+      return head + `<span class="sub">rest = 앞 ${fmt(top.cand.slice(0, i))} + 뒤 ${fmt(top.cand.slice(i + 1))} + ${st.node}의 자식 ${fmt(CH[st.node])} = ${fmt(st.rest)}</span>`;
+    }
+    case 'reject':
+      return `${st.node}번 🐺을 고른다. 검사 ${s} &gt; ${w + 1} <b>✗</b> → 이 갈래는 버린다.<span class="sub">rest는 12줄에서 만들었지만 쓰지 않는다. ${st.node}번은 이 칸의 후보 목록에 그대로 남는다.</span>`;
+    case 'back':
+      return `↩ ${st.node}번 갈래에서 돌아왔다. 이 칸은 그대로다: 양 ${s}, 늑대 ${w}, 후보 ${fmt(top.cand)}.<span class="sub">되돌리는 코드가 없는데도 원래대로다. 이제 다음 후보를 본다.</span>`;
+    case 'done':
+      return (top.cand.length ? `이 칸의 후보 ${fmt(top.cand)}를 다 봤다.` : '이 칸은 후보가 없다.') + ` 이 칸은 끝 → 아래 칸(나를 부른 칸)으로 돌아간다.`;
+    case 'end':
+      return `모든 갈래를 다 봤다. <b>answer = ${st.answer}</b>를 돌려준다.`;
+  }
+}
+const TONE = { start: 'info', call: 'info', sheep: 'good', wolf: 'good', reject: 'bad', back: 'back', done: 'back', end: 'good' };
+
+function renderStack(st) {
+  const host = $('#s-stack');
+  if (!st.stack.length) { host.innerHTML = '<p class="muted small">비어 있음 (아직 시작 전이거나 모두 끝남)</p>'; return; }
+  host.innerHTML = st.stack.map((f, d) => {
+    const isTop = d === st.stack.length - 1;
+    const chips = f.cand.length ? f.cand.map((v, j) => {
+      let c = 'chip sm';
+      if (j < f.i) c += ' past';
+      else if (j === f.i) c += isTop ? (st.kind === 'reject' ? ' rej' : ' cur') : ' paused';
+      return `<span class="${c}">${v}${emo(v)}</span>`;
+    }).join('') : '<span class="muted small">후보 없음</span>';
+    return `<div class="frame${isTop ? ' top' : ''}"><span class="f-depth">${d + 1}</span><span class="f-call">dfs(양 ${f.sheep}, 늑대 ${f.wolf})</span><span class="chips">${chips}</span><span class="f-path">지나온 길 ${f.path.join('→')}</span></div>`;
+  }).reverse().join('');
+}
+
+function simShow(k) {
+  cur = Math.max(0, Math.min(TRACE.length - 1, k));
+  const st = TRACE[cur];
+  const top = st.stack[st.stack.length - 1];
+  sTree.set({
+    visited: top ? top.path : [0],
+    cand: top ? top.cand : CH[0],
+    focus: st.kind === 'sheep' || st.kind === 'wolf' ? st.node : -1,
+    reject: st.kind === 'reject' ? st.node : -1
+  });
+  sCode.hl(st.lines, st.kind === 'reject' ? 'bad' : '');
+  const m = $('#s-msg');
+  m.innerHTML = describe(st, top);
+  m.className = 'msg ' + TONE[st.kind];
+  $('#s-s').textContent = top ? top.sheep : 1;
+  $('#s-w').textContent = top ? top.wolf : 0;
+  $('#s-a').textContent = st.answer;
+  $('#s-range').value = cur;
+  $('#s-count').textContent = `${cur + 1} / ${TRACE.length}`;
+  $('#s-prev').disabled = cur === 0;
+  $('#s-next').disabled = cur === TRACE.length - 1;
+  renderStack(st);
+}
+function stopPlay() { clearInterval(timer); timer = null; $('#s-play').textContent = '⏵ 자동 재생'; }
+function startPlay() {
+  stopPlay();
+  $('#s-play').textContent = '⏸ 멈춤';
+  timer = setInterval(() => { if (cur >= TRACE.length - 1) stopPlay(); else simShow(cur + 1); }, +$('#s-speed').value);
+}
+$('#s-range').max = TRACE.length - 1;
+$('#s-range').addEventListener('input', e => { stopPlay(); simShow(+e.target.value); });
+$('#s-first').addEventListener('click', () => { stopPlay(); simShow(0); });
+$('#s-prev').addEventListener('click', () => { stopPlay(); simShow(cur - 1); });
+$('#s-next').addEventListener('click', () => { stopPlay(); simShow(cur + 1); });
+$('#s-play').addEventListener('click', () => timer ? stopPlay() : startPlay());
+$('#s-speed').addEventListener('change', () => { if (timer) startPlay(); });
+$('#s-back').addEventListener('click', () => {
+  stopPlay();
+  const k = TRACE.findIndex((st, j) => j > cur && st.kind === 'back');
+  if (k >= 0) simShow(k);
+});
+const STAR = TRACE.findIndex(st => st.kind === 'call' && st.stack[st.stack.length - 1].sheep === 5);
+$('#s-star').addEventListener('click', () => { stopPlay(); simShow(STAR); });
+document.addEventListener('keydown', e => {
+  if (/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
+  if (e.key === 'ArrowRight') { stopPlay(); simShow(cur + 1); }
+  if (e.key === 'ArrowLeft') { stopPlay(); simShow(cur - 1); }
+});
+simShow(0);
+
+const DEC = buildDecision();
+function dtCall(call, label, onAns) {
+  const kids = call.kids.map(k => {
+    const ans = onAns && ANSWER_PATH[call.path.length] === k.pick;
+    if (!k.ok) return `<li class="rej">${k.pick} 고름 🐺 (${call.sheep} &gt; ${call.wolf + 1} ✗) → 버림</li>`;
+    const c = k.call;
+    const check = isSheep(k.pick) ? '' : ` (${call.sheep} &gt; ${call.wolf + 1} OK)`;
+    const lab = `${k.pick} 고름 ${emo(k.pick)}${check} → 양 ${c.sheep} · 늑대 ${c.wolf} · 후보 ${fmt(c.cand)}${c.sheep === 5 ? ' ⭐' : ''}`;
+    return dtCall(c, lab, ans);
+  }).join('');
+  const cls = onAns ? ' class="ans"' : '';
+  if (!call.kids.length) return `<li${cls}><span class="leaf">${label} · 후보 없음 → 끝</span></li>`;
+  return `<li${cls}><details><summary>${label}</summary><ul>${kids}</ul></details></li>`;
+}
+$('#dtree').innerHTML = dtCall(DEC.root, `시작 → 양 1 · 늑대 0 · 후보 ${fmt(CH[0])}`, true);
+$('#dt-stat').textContent = `예제 1 전체: 들어간 칸(dfs 호출) ${DEC.calls}개 · 가지치기로 버린 갈래 ${DEC.rejects}개.`;
+const allDetails = () => [...document.querySelectorAll('#dtree details')];
+$('#dt-none').addEventListener('click', () => allDetails().forEach(d => d.open = false));
+$('#dt-all').addEventListener('click', () => allDetails().forEach(d => d.open = true));
+$('#dt-one').addEventListener('click', () => allDetails().forEach((d, k) => d.open = k === 0));
+$('#dt-ans').addEventListener('click', () => {
+  allDetails().forEach(d => d.open = false);
+  document.querySelectorAll('#dtree li.ans > details').forEach(d => d.open = true);
+});
+$('#dtree details').open = true;
+
+const STAGES = [
+  {
+    html: `<div class="box active"><b>칸 A</b><br>sheep = 2, wolf = 0<br>candidates = [8, 2, 4]</div>`,
+    msg: '1번을 고른 뒤의 칸 A다. 이제 후보 8을 고르려 한다.', tone: 'info'
+  },
+  {
+    html: `<div class="box active"><b>칸 A</b><br>sheep = 2, wolf = 0<br>candidates = [8, 2, 4]</div><span class="arrow">→ 복사해서 새로 만듦 →</span><div class="box new"><b>rest (새 리스트)</b><br>[2, 4, 7, 9]<br>wolf + 1 = 1 (새 값)</div>`,
+    msg: '8을 고른다. rest는 <b>새로 만든 리스트</b>, wolf + 1은 <b>새로 계산한 값</b>이다. A의 candidates와 wolf는 손대지 않았다.', tone: 'good'
+  },
+  {
+    html: `<div class="box dim"><b>칸 A (기다리는 중)</b><br>sheep = 2, wolf = 0<br>candidates = [8, 2, 4]</div><span class="arrow">→</span><div class="box active"><b>칸 B</b><br>sheep = 2, wolf = 1<br>candidates = [2, 4, 7, 9]</div>`,
+    msg: '칸 B가 실행된다. B 안에서 7, 9를 고르며 더 깊이 들어간다. B는 받은 값만 쓴다. A의 값에는 손이 닿지 않는다.', tone: 'info'
+  },
+  {
+    html: `<div class="box same"><b>칸 A (다시 실행)</b><br>sheep = 2, wolf = 0<br>candidates = [8, 2, 4]</div><span class="arrow">←</span><div class="box dim"><b>칸 B (끝남)</b></div>`,
+    msg: 'B가 끝나 A로 돌아왔다. A의 값은 처음 그대로다. <b>되돌릴 게 애초에 없다.</b> 이제 A는 다음 후보 2를 본다.', tone: 'back'
+  }
+];
+let stage = 0;
+function showStage(k) {
+  stage = Math.max(0, Math.min(STAGES.length - 1, k));
+  $('#st-view').innerHTML = STAGES[stage].html;
+  $('#st-msg').innerHTML = STAGES[stage].msg;
+  $('#st-msg').className = 'msg ' + STAGES[stage].tone;
+  $('#st-count').textContent = `${stage + 1} / ${STAGES.length}`;
+  $('#st-prev').disabled = stage === 0;
+  $('#st-next').disabled = stage === STAGES.length - 1;
+}
+$('#st-prev').addEventListener('click', () => showStage(stage - 1));
+$('#st-next').addEventListener('click', () => showStage(stage + 1));
+showStage(0);
+
+const dupTree = makeTree($('#dup-tree'));
+dupTree.set({ visited: DEC.dup.set });
+$('#dup-text').innerHTML = `예제 1에서 방문 집합 <b>{${DEC.dup.set.join(', ')}}</b>에 도착하는 순서가 <b>${DEC.dup.paths.length}가지</b>나 된다.`;
+$('#dup-list').innerHTML = DEC.dup.paths.map(p => `<li>${p.join(' → ')}</li>`).join('');
+$('#dup-total').innerHTML = `<b class="title">예제 1 전체로 보면</b>dfs 호출은 ${DEC.calls}번이다. 그중 서로 다른 방문 집합은 ${DEC.distinct}개뿐이다. 나머지 <b>${DEC.calls - DEC.distinct}번</b>은 이미 본 상태를 처음부터 다시 본 것이다.`;
+
+$('#foot').textContent = `이 페이지의 시뮬레이터(${TRACE.length}단계)와 선택 트리는 solve_4.py와 같은 순서로 브라우저에서 직접 계산한 것이다.`;
+</script>
+</body>
+</html>

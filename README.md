@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 이번주 문제 (Week 12)
+## 📌 이번주 문제 (Week 13)
 
 **주제: 탐색 + 최단경로 (다익스트라)**
 
@@ -16,27 +16,20 @@
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [길찾기 (1219)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1219) | SWEA D4 | 하 |
-| 2 | [상원이의 생일파티 (5521)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5521) | SWEA D4 | 중하 |
-| 3 | [오! 나의 여신님 (7793)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=7793) | SWEA D5 | 중 |
+| 1 | [지도 칠하기 (7208)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=7208) | SWEA D4 | 중 |
 
 **다익스트라**
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 4 | [배달](https://school.programmers.co.kr/learn/courses/30/lessons/12978) | 프로그래머스 Lv.2 | 중하 |
-| 5 | [합승 택시 요금](https://school.programmers.co.kr/learn/courses/30/lessons/72413) | 2021 KAKAO BLIND · 프로그래머스 Lv.3 | 중 |
-
-> 💡 번호 순서대로 푸시면 난이도가 완만하게 올라갑니다.
+| 2 | [최소 비용 (5250)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5250) | SWEA (파이썬 S/W 문제해결 구현 7일차) | 중하 |
+| 3 | [등산코스 정하기](https://school.programmers.co.kr/learn/courses/30/lessons/118669) | 2022 KAKAO TECH INTERNSHIP · 프로그래머스 Lv.3 | 중 |
 
 ### 카카오 기출 🟣
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [양과 늑대](https://school.programmers.co.kr/learn/courses/30/lessons/92343) | 2022 KAKAO BLIND · 프로그래머스 Lv.3 | 중상 |
-
---- 카카오 문제는 모든 팀에서 공유하는 문제입니다.
-    다양한 풀이를 공유할 수 있도록 하겠습니다.
+| 1 | [경주로 건설](https://school.programmers.co.kr/learn/courses/30/lessons/67259) | 2020 KAKAO 인턴십 · 프로그래머스 Lv.3 | 중상 |
 
 ---
 

@@ -6,9 +6,9 @@
 
 ---
 
-## 📌 이번주 문제 (Week 13)
+## 📌 이번주 문제 (Week 14)
 
-**주제: 탐색 + 최단경로 (다익스트라)**
+**주제: 탐색 + 유니온파인드 / MST**
 
 ### 기본 문제
 
@@ -16,20 +16,24 @@
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [지도 칠하기 (7208)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=7208) | SWEA D4 | 중 |
+| 1 | [부분 수열의 합 (2817)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=2817) | SWEA D3 | 하 |
+| 2 | [동철이의 일 분배 (1865)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1865) | SWEA D4 | 중하 |
+| 3 | [작업순서 (1267)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1267) | SWEA D4 | 중 |
 
-**다익스트라**
+**유니온파인드 / MST**
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 2 | [최소 비용 (5250)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5250) | SWEA (파이썬 S/W 문제해결 구현 7일차) | 중하 |
-| 3 | [등산코스 정하기](https://school.programmers.co.kr/learn/courses/30/lessons/118669) | 2022 KAKAO TECH INTERNSHIP · 프로그래머스 Lv.3 | 중 |
+| 4 | [서로소 집합 (3289)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=3289) | SWEA D4 | 하 |
+| 5 | [네트워크](https://school.programmers.co.kr/learn/courses/30/lessons/43162) | 프로그래머스 Lv.3 | 중하 |
+| 6 | [섬 연결하기](https://school.programmers.co.kr/learn/courses/30/lessons/42861) | 프로그래머스 Lv.3 | 중 |
 
 ### 카카오 기출 🟣
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [경주로 건설](https://school.programmers.co.kr/learn/courses/30/lessons/67259) | 2020 KAKAO 인턴십 · 프로그래머스 Lv.3 | 중상 |
+| 1 | [부대복귀](https://school.programmers.co.kr/learn/courses/30/lessons/132266) | 2022 KAKAO TECH INTERNSHIP · 프로그래머스 Lv.3 | 중 |
+| 2 | [호텔 방 배정](https://school.programmers.co.kr/learn/courses/30/lessons/64063) | 2019 KAKAO 겨울 인턴십 · 프로그래머스 Lv.4 | 중상 |
 
 ---
 

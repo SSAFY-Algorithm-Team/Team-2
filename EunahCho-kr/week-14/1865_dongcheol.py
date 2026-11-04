@@ -23,11 +23,11 @@ def dfs(i, percent):
         new_percent = percent * percents[i][j]
         # j번째 일을 맡은 사람이 없을 때 탐색 가능
         # 새로 구한 확률이 memo에 기록된 확률보다 클 때만 의미 있음
-        if visited[j] == -1 and new_percent > memo[i][j]:
-            visited[j] = i  # j번째 일 맡았다! 체크
+        if not visited[j] and new_percent > memo[i][j]:
+            visited[j] = True  # j번째 일 맡았다! 체크
             memo[i][j] = new_percent  # 이 확률이 최대다! 기록
             dfs(i + 1, percent * percents[i][j] / 100)
-            visited[j] = -1 
+            visited[j] = False
             memo[i][j] = percent
 
 
@@ -37,7 +37,7 @@ for tc in range(1, T + 1):
     percents = [list(map(int, input().split())) for _ in range(N)]
 
     best = 0
-    visited = [-1] * N  # 해당 일을 맡은 사람이 있는지 체크
+    visited = [False] * N  # 해당 일을 맡은 사람이 있는지 체크
     memo = [[-1] * N for _ in range(N)]  # i번째 사람이 j번째 일을 맡을 때 최대 확률 기록용
     dfs(0, 1)
 

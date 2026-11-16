@@ -1,3 +1,7 @@
+# 프로그래머스 부대복귀
+# https://school.programmers.co.kr/learn/courses/30/lessons/132266?language=python3
+## dijk 풀이
+
 import heapq
 
 def solution(n, roads, sources, destination):
@@ -37,15 +41,21 @@ def solution(n, roads, sources, destination):
 
 # print(solution(3, [[1, 2], [2, 3]], [2, 3], 1))
 # print(solution(5, [[1, 2], [1, 4], [2, 4], [2, 5], [4, 5]], [1, 3, 5], 5))
+
 """
-- 21번째 줄
-- 왜 출발지 시작은 안되고 도착지 시작은 되는지
-- dist 차원 결정 -> 한 리스트로만 해도 됐던 이유?
-- BFS 코드도 고쳐서 써보기 + 다익스트라랑 시간 차이 비교
-- 이거도 보충수업 깃랩에 올리기
+- 왜 출발지 시작은 안되고 도착지 시작은 되는지 
+    => 도착지 시작도 가능은 하지만, dist 처리가 따로 되어서 source 수만큼 돌려야 되거나(bfs실패1), dist가 2차원이어야함(bfs실패2) 
+    하지만 도착지에서 측정하면 한 번만 돌려도 됨
+
+- BFS 코드도 고쳐서 써보기 + 다익스트라랑 시간 차이 비교 => comback_bfs 코드랑 비교, 시간 차이는 다익스트라가 17배정도
+
+[시간 복잡도 비교]
+                           | BFS	   | 다익스트라 (heapq)
+이론	                    | O(n + m)  | O((n + m) log n)
+이 문제 최대치 (n=10만, m=50만)| 약 110만 번 | 약 110만 × log(10만)≈17 → 약 1,900만 번
 """
 
-############################# BFS 코드 -> 시간초과
+############################# BFS 코드 -> 시간초과 1
 
 # from collections import deque
 
@@ -88,3 +98,52 @@ def solution(n, roads, sources, destination):
 #                 queue.append((i, next, curr + 1))
 
 #     return result[1:]
+
+
+#################### BFS 시간초과 2
+
+# from collections import deque
+
+
+# def bfs(start, destination, graph, n):
+    
+#     queue = deque([(start, 0)])
+#     visited = [False] * (n + 1)
+#     visited[start] = True
+
+#     while queue:
+#         node, dist = queue.popleft()
+
+#         for next_n in graph[node]:
+
+#             if next_n == destination:
+#                 return dist + 1
+            
+#             if not visited[next_n]:
+#                 queue.append((next_n, dist + 1))
+#                 visited[next_n] = True
+
+#     return -1 # 끝까지 destination 도달 못했으면 -1 출력
+
+# # print(bfs(2, 1, {1:[2], 2:[1, 3], 3: [2]}, 3))
+
+
+# def solution(n, roads, sources, destination):
+
+#     # 그래프 만들기
+#     graph = {i: [] for i in range(1, n + 1)}
+#     for n1, n2 in roads:
+#         graph[n1].append(n2)
+#         graph[n2].append(n1)
+
+#     # source에서 한 원소씩 bfs돌리고, 일치하는 위치에 답 출력
+#     result = []
+#     for source in sources:
+#         # 예외처리 : 시작점과 목적지가 같으면 0
+#         if source == destination:
+#             res = 0
+#         else:
+#             res = bfs(source, destination, graph, n)
+#         result.append(res)
+
+#     return result

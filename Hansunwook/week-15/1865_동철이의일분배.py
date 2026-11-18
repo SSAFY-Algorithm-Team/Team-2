@@ -19,4 +19,4 @@ for test_case in range(1, T + 1):
             dfs(count+1, per*P[count][i]/100)
             visit[i] = False
     dfs(0,1)
-    print(f"#{test_case} {result_max[0]}")
+    print(f"#{test_case} {result_max[0]}") 

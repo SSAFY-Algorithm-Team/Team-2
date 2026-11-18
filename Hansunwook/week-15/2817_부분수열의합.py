@@ -17,4 +17,4 @@ for test_case in range(1, T + 1):
         for i in range(count,N):
             dfs(i+1,sum + A[i])
     dfs(0,0)
-    print(f"#{test_case} {result[0]}")
+    print(f"#{test_case} {result[0]}") 

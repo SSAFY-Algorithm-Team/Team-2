@@ -6,9 +6,9 @@
 
 ---
 
-## 📌 이번주 문제 (Week 14)
+## 📌 이번주 문제 (Week 15)
 
-**주제: 탐색 + 유니온파인드 / MST**
+**주제: 탐색 + 유니온파인드 (백준)**
 
 ### 기본 문제
 
@@ -16,24 +16,18 @@
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [부분 수열의 합 (2817)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=2817) | SWEA D3 | 하 |
-| 2 | [동철이의 일 분배 (1865)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1865) | SWEA D4 | 중하 |
-| 3 | [작업순서 (1267)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1267) | SWEA D4 | 중 |
+| 1 | [단지번호붙이기 (2667)](https://www.acmicpc.net/problem/2667) | 백준 Silver 1 | 하 |
+| 2 | [숨바꼭질 3 (13549)](https://www.acmicpc.net/problem/13549) | 백준 Gold 5 | 중하 |
+| 3 | [아기 상어 (16236)](https://www.acmicpc.net/problem/16236) | 백준 Gold 3 · 삼성 SW 역량테스트 기출 | 중 |
 
-**유니온파인드 / MST**
-
-| # | 문제 | 출처 | 난이도 |
-|:-:|---|---|:-:|
-| 4 | [서로소 집합 (3289)](https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=3289) | SWEA D4 | 하 |
-| 5 | [네트워크](https://school.programmers.co.kr/learn/courses/30/lessons/43162) | 프로그래머스 Lv.3 | 중하 |
-| 6 | [섬 연결하기](https://school.programmers.co.kr/learn/courses/30/lessons/42861) | 프로그래머스 Lv.3 | 중 |
-
-### 카카오 기출 🟣
+**유니온파인드**
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [부대복귀](https://school.programmers.co.kr/learn/courses/30/lessons/132266) | 2022 KAKAO TECH INTERNSHIP · 프로그래머스 Lv.3 | 중 |
-| 2 | [호텔 방 배정](https://school.programmers.co.kr/learn/courses/30/lessons/64063) | 2019 KAKAO 겨울 인턴십 · 프로그래머스 Lv.4 | 중상 |
+| 4 | [여행 가자 (1976)](https://www.acmicpc.net/problem/1976) | 백준 Gold 4 | 중하 |
+| 5 | [친구 네트워크 (4195)](https://www.acmicpc.net/problem/4195) | 백준 Gold 2 | 중 |
+
+> 💡 번호 순서대로 푸시면 난이도가 완만하게 올라갑니다.
 
 ---
 

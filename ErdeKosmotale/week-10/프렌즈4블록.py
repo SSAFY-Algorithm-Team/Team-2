@@ -38,12 +38,6 @@ def make_down(lst,m,col):
         
     return
         
-        
-        
-    
-
-
-    
 def solution(m, n, board):
     
     board_t = []

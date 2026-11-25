@@ -27,7 +27,7 @@ def check():
     for i in range(M - 1):
         now = itinery[i]
         nxt = itinery[i + 1]
-        if parent[now] != parent[nxt]:
+        if find(now) != find(nxt):
             return 'NO'
     return 'YES'
 

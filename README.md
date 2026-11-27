@@ -6,28 +6,34 @@
 
 ---
 
-## 📌 이번주 문제 (Week 15)
+## 📌 이번주 문제 (Week 16)
 
-**주제: 탐색 + 유니온파인드 (백준)**
+**주제: 이분탐색 + DFS / BFS (백준)**
 
 ### 기본 문제
 
-**탐색**
+**이분탐색**
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 1 | [단지번호붙이기 (2667)](https://www.acmicpc.net/problem/2667) | 백준 Silver 1 | 하 |
-| 2 | [숨바꼭질 3 (13549)](https://www.acmicpc.net/problem/13549) | 백준 Gold 5 | 중하 |
-| 3 | [아기 상어 (16236)](https://www.acmicpc.net/problem/16236) | 백준 Gold 3 · 삼성 SW 역량테스트 기출 | 중 |
+| 1 | [수 찾기 (1920)](https://www.acmicpc.net/problem/1920) | 백준 Silver 4 | 하 |
+| 2 | [랜선 자르기 (1654)](https://www.acmicpc.net/problem/1654) | 백준 Silver 2 | 중하 |
+| 3 | [공유기 설치 (2110)](https://www.acmicpc.net/problem/2110) | 백준 Gold 4 | 중 |
 
-**유니온파인드**
+**DFS / BFS**
 
 | # | 문제 | 출처 | 난이도 |
 |:-:|---|---|:-:|
-| 4 | [여행 가자 (1976)](https://www.acmicpc.net/problem/1976) | 백준 Gold 4 | 중하 |
-| 5 | [친구 네트워크 (4195)](https://www.acmicpc.net/problem/4195) | 백준 Gold 2 | 중 |
+| 4 | [연구소 (14502)](https://www.acmicpc.net/problem/14502) | 백준 Gold 4 · 삼성 SW 역량테스트 기출 | 중 |
+| 5 | [벽 부수고 이동하기 (2206)](https://www.acmicpc.net/problem/2206) | 백준 Gold 3 | 중상 |
 
 > 💡 번호 순서대로 푸시면 난이도가 완만하게 올라갑니다.
+
+### 카카오 기출 🟣
+
+| # | 문제 | 출처 | 난이도 |
+|:-:|---|---|:-:|
+| 1 | [징검다리 건너기](https://school.programmers.co.kr/learn/courses/30/lessons/64062) | 2019 KAKAO 겨울 인턴십 · 프로그래머스 Lv.3 | 중 |
 
 ---
 
